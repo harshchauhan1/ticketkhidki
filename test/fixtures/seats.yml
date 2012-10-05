@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  audi_id: 1
+  seat_no: MyString
+  type: 
+  price: 1.5
+
+two:
+  audi_id: 1
+  seat_no: MyString
+  type: 
+  price: 1.5

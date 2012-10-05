@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  movie_id: 1
+  timing: 2012-09-22 17:24:43
+  audi_id: 1
+
+two:
+  movie_id: 1
+  timing: 2012-09-22 17:24:43
+  audi_id: 1

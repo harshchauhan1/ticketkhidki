@@ -1,0 +1,21 @@
+.register {
+	background: darkgrey;
+	font-style: sans sarif;
+	text-align: center;
+	height: 30px;
+	font-size: 17.5px;
+	border: solid 1px firebrick;
+}
+fieldset {
+	width: 500px;
+	position: relative;
+	left: 375px;
+	top: 50px;
+	border: solid 1px firebrick;
+}
+label {
+	float: left;
+}
+legend {
+	border: solid 1px firebrick;
+}

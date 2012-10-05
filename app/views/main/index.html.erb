@@ -1,0 +1,25 @@
+<% if !session[:user_id] %>
+<div class = "main">
+    <%= link_to 'Sign In', login_path	 %>
+    <%= link_to 'Register', new_user_path %>
+</div>
+<% end %>
+<div class = "selection">
+	<div class = "option">
+		<select>
+			<option>Delhi/NCR</option>
+		</select>
+	</div>
+	<div class = "option">
+		<select>
+			<option selected ="selected"></optio>
+			<option></option>
+		</select>
+	</div>
+	<div>
+		<select>
+			<option selected ="selected"></optio>
+			<option></option>
+		</select>
+	</div>
+</div>
