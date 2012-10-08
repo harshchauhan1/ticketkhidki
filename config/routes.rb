@@ -4,12 +4,18 @@ Ticketkhidki::Application.routes.draw do
   #get "users/index"
 
   resources :users
+  resources :shows
+  controller :users do
+    get 'change_password' => :change_password
+    post 'change_password' => :save_password
+  end
   resources :main
   controller :sessions do
     get 'login' => :new
     post 'login' => :create 
     delete 'logout' => :destroy
   end
+  resources :sessions
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -59,7 +65,7 @@ Ticketkhidki::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'main#index'
+  root :to => 'sessions#index'
 
   # See how all your routes lay out with "rake routes"
 

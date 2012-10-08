@@ -8,10 +8,8 @@ class UsersController < ApplicationController
 	end
 	def show
     @user = User.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+    @movies = Movie.all
+    @date = Date.today
   end
   def new
     @user = User.new
@@ -22,6 +20,19 @@ class UsersController < ApplicationController
       redirect_to login_url
     else
       render :new
+    end
+  end
+  def change_password
+  end
+  def save_password
+    user = User.find(session[:user_id])
+    if user && user.authenticate(params[:existing_password])
+      user.password = params[:password]
+      user.password_confirmation = params[:password_confirmation]
+      user.save
+      redirect_to user_url(user.id)
+    else
+      redirect_to change_password_url, alert: "Invalid current password"
     end
   end
 end

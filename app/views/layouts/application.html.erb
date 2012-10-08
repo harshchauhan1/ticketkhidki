@@ -2,15 +2,15 @@
 <html>
 <head>
   <title>Ticketkhidki</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", params[:controller] %>
+  <%= javascript_include_tag "application", params[:controller] %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class = "header">
 	<h1><u>TicketKhidki</u></h1>
 	<% if session[:user_id] %>
-		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %>
+		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %> 
 	<% end %>
 </div>
 <%= yield %>

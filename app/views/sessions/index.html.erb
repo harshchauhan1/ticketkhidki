@@ -1,9 +1,9 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-<div class = "name">
-	<p> Welcome  <%= @user.name %>, </p>
+<% if !session[:user_id] %>
+<div class = "main">
+    <%= link_to 'Sign In', login_path	 %>
+    <%= link_to 'Register', new_user_path %>
 </div>
+<% end %>
 <div class = "selection">
 	<div class = "option">
 		<select>
@@ -21,14 +21,11 @@
 		</select>
 	</div>
 	<div>
-		<select onchange = "render_shows(this)">
+		<select>
 			<option selected ="selected">select date</option>
 			<option>Today,  <%= @date.strftime("%d") %> <%= @date.strftime("%b") %></option>
 			<option>Tommorrow,  <%= (@date+1).strftime("%d") %> <%= (@date+1).strftime("%b") %></option>
 			<option><%= (@date+2).strftime("%A") %>,  <%= (@date+2).strftime("%d") %>  <%= (@date+2).strftime("%b") %></option>
 		</select>
 	</div>
-</div>
-<div class = "change_password">
-	<%= link_to 'change password', change_password_path %>
 </div>

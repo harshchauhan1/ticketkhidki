@@ -7,15 +7,47 @@
 	border: solid 1px firebrick;
 }
 fieldset {
-	width: 500px;
+	width: 800px;
 	position: relative;
-	left: 375px;
+	left: 230px;
 	top: 50px;
+	height: 225px;
 	border: solid 1px firebrick;
 }
 label {
-	float: left;
-}
+  float:left;
+  width:40%;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  text-align:right;
+  font-weight:bold;
+  }
 legend {
 	border: solid 1px firebrick;
+	background: darkgrey;
+}
+.name {
+	position :relative;
+	left: 930px;
+	top: -10px;
+	width: 110px;
+}
+
+.field {
+	padding-bottom: 15px;
+}
+
+.actions {
+	position: relative;
+	top: 31px;
+}
+.change_password {
+	width: 150px; 
+	position: relative;
+	top: -70px;
+	left: 1110px;
+
+	a {
+	color: firebrick;
+	}
 }
