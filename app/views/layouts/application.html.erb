@@ -10,7 +10,14 @@
 <div class = "header">
 	<h1><u>TicketKhidki</u></h1>
 	<% if session[:user_id] %>
-		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %> 
+		<% user = User.find(session[:user_id]) %>
+		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %>
+		<div class = "name">
+			<p> Welcome  <%= user.name %>, </p>
+		</div>
+		<div class = "change_password">
+			<%= link_to 'change password', change_password_path %>
+		</div> 
 	<% end %>
 </div>
 <%= yield %>

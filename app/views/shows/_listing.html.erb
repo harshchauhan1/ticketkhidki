@@ -1,0 +1,12 @@
+<% unless movie_shows.nil? %>
+<div class = "listing">
+	<% location.keys.each do |k|  %>
+		<div class = "row">
+			<%= k %>
+			<% location[k].each do |l| %>
+				<a href = "#" onclick = "ticket_book(this)"><%= l %></a>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<% end %>

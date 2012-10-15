@@ -1,0 +1,1 @@
+$('#listings').html("<%= escape_javascript(render :partial => 'shows/listing', :locals => {:movie_shows => @movie_shows, :location => @location})%>")

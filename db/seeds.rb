@@ -22,14 +22,14 @@ m.movie_shows.create(:timing => "09:00")
 m.movie_shows.create(:timing => "13:00")
 m.movie_shows.create(:timing => "21:00")
 a = Audi.find(1)
-ms = MovieShow.find_all_by_id([76,77,78])
+ms = MovieShow.find_all_by_id([89, 90, 91])
 a.movie_shows << ms
 a = Audi.find(2)
-ms = MovieShow.find_all_by_id([79,80,81])
+ms = MovieShow.find_all_by_id([92, 93, 94])
 a.movie_shows << ms
 a = Audi.find(3)
-ms = MovieShow.find_all_by_id([82,83,84])
+ms = MovieShow.find_all_by_id([95, 96, 97])
 a.movie_shows << ms
 a = Audi.find(4)
-ms = MovieShow.find_all_by_id([85,86,87])
+ms = MovieShow.find_all_by_id([98, 99, 100])
 a.movie_shows << ms

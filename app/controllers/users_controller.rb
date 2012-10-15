@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       user.password = params[:password]
       user.password_confirmation = params[:password_confirmation]
       user.save
-      redirect_to user_url(user.id)
+      redirect_to shows_url
     else
       redirect_to change_password_url, alert: "Invalid current password"
     end

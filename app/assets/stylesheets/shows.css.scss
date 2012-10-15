@@ -1,0 +1,17 @@
+.hidden {
+	display: none;
+}
+.listing {
+	background: grey;
+	width: 1000px;
+}
+.row {
+	border-bottom: solid 1px black;
+	text-align: left;
+	height: 50px;
+}
+#listings {
+	height: 100px;
+	position: relative;
+	top: 100px;
+}

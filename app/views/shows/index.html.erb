@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+<body>
+	<% if !session[:user_id] %>
+<div class = "main">
+    <%= link_to 'Sign In', login_path	 %>
+    <%= link_to 'Register', new_user_path %>
+</div>
+<% end %>
+	<%= form_tag movie_list_shows_path, :remote => true, :method => 'get' do %>
+		<div class = "selection">
+			<div class = "option">
+				<select>
+					<option>Delhi/NCR</option>
+				</select>
+			</div>
+			<div class = "option">
+				<% movie = Movie.movie_arr %>
+				<% movie.unshift("select movie") %>
+				<%= select_tag "movie", options_for_select(movie) %>
+			</div>
+			<div class = "option">
+				<% @today = @date.strftime("%d %b") %> <% @tomorrow = (@date+1).strftime(" %d %b") %> <% @day_after = (@date+2).strftime("%A %d %b") %>
+				<%= select_tag "movie_date", options_for_select(["select date", "Today, " + @today, "Tomorrow, " + @tomorrow, @day_after]), :onchange => "create_shows(this)" %>
+			</div>
+		</div>
+	<% end %>
+	<div id = "listings">
+
+		<%= render :partial => 'shows/listing', :locals => {:movie_shows => @movie_shows, :location => @location} %>
+	</div>
+</body>
+</html>

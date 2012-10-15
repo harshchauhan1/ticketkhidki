@@ -4,7 +4,12 @@ Ticketkhidki::Application.routes.draw do
   #get "users/index"
 
   resources :users
-  resources :shows
+  resources :shows do
+    collection do
+      get :movie_list
+    end
+  end
+  
   controller :users do
     get 'change_password' => :change_password
     post 'change_password' => :save_password
@@ -65,7 +70,7 @@ Ticketkhidki::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'sessions#index'
+  root :to => 'shows#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -3,4 +3,5 @@ class Audi < ActiveRecord::Base
   belongs_to :theatre
   has_many :seats
   has_many :movie_shows
+
 end

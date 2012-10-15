@@ -26,12 +26,7 @@ legend {
 	border: solid 1px firebrick;
 	background: darkgrey;
 }
-.name {
-	position :relative;
-	left: 930px;
-	top: -10px;
-	width: 110px;
-}
+
 
 .field {
 	padding-bottom: 15px;
@@ -40,14 +35,4 @@ legend {
 .actions {
 	position: relative;
 	top: 31px;
-}
-.change_password {
-	width: 150px; 
-	position: relative;
-	top: -70px;
-	left: 1110px;
-
-	a {
-	color: firebrick;
-	}
 }

@@ -4,28 +4,28 @@
     <%= link_to 'Register', new_user_path %>
 </div>
 <% end %>
-<div class = "selection">
-	<div class = "option">
-		<select>
-			<option>Delhi/NCR</option>
-		</select>
+	<div class = "selection">
+		<div class = "option">
+			<select>
+				<option>Delhi/NCR</option>
+			</select>
+		</div>
+		<div class = "option">
+			<select>
+				<option selected ="selected">select movie</option>
+				<% @movies.each do |movie|%>
+				<option>
+					<%= movie.name %>
+				</option>
+				<% end %>
+			</select>
+		</div>
+		<div class = "option">
+			<select>
+				<option selected ="selected">select date</option>
+				<option>Today,  <%= @date.strftime("%d") %> <%= @date.strftime("%b") %></option>
+				<option>Tommorrow,  <%= (@date+1).strftime("%d") %> <%= (@date+1).strftime("%b") %></option>
+				<option><%= (@date+2).strftime("%A") %>,  <%= (@date+2).strftime("%d") %>  <%= (@date+2).strftime("%b") %></option>
+			</select>
+		</div>
 	</div>
-	<div class = "option">
-		<select>
-			<option selected ="selected">select movie</option>
-			<% @movies.each do |movie|%>
-			<option>
-				<%= movie.name %>
-			</option>
-			<% end %>
-		</select>
-	</div>
-	<div>
-		<select>
-			<option selected ="selected">select date</option>
-			<option>Today,  <%= @date.strftime("%d") %> <%= @date.strftime("%b") %></option>
-			<option>Tommorrow,  <%= (@date+1).strftime("%d") %> <%= (@date+1).strftime("%b") %></option>
-			<option><%= (@date+2).strftime("%A") %>,  <%= (@date+2).strftime("%d") %>  <%= (@date+2).strftime("%b") %></option>
-		</select>
-	</div>
-</div>
