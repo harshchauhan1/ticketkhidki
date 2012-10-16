@@ -26,7 +26,11 @@ legend {
 	border: solid 1px firebrick;
 	background: darkgrey;
 }
-
+#back {
+	position: relative;
+	top: -30px;
+	left: 650px;
+}
 
 .field {
 	padding-bottom: 15px;
@@ -35,4 +39,9 @@ legend {
 .actions {
 	position: relative;
 	top: 31px;
+}
+#back {
+	position: relative;
+	top: -35px;
+	left: 650px;
 }

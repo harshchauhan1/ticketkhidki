@@ -2,7 +2,7 @@ Ticketkhidki::Application.routes.draw do
   
   
   #get "users/index"
-
+  resources :seats
   resources :users
   resources :shows do
     collection do

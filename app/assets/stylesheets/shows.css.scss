@@ -5,7 +5,7 @@
 	background: grey;
 	width: 1000px;
 }
-.row {
+.row { 
 	border-bottom: solid 1px black;
 	text-align: left;
 	height: 50px;
@@ -14,4 +14,17 @@
 	height: 100px;
 	position: relative;
 	top: 100px;
+}
+.theatre_name {
+	width: 90px;
+	padding-left: 7px;
+}
+.timing {
+	position: relative;
+	top: -20px;
+	left: 120px;
+
+	a {
+	padding-right: 30px;
+	}
 }

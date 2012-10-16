@@ -2,10 +2,10 @@
 <div class = "listing">
 	<% location.keys.each do |k|  %>
 		<div class = "row">
-			<%= k %>
-			<% location[k].each do |l| %>
-				<a href = "#" onclick = "ticket_book(this)"><%= l %></a>
-			<% end %>
+			<div class ="theatre_name"><b><u><%= k %></u></b></div>
+			<div class ="timing"><% location[k].each do |l| %>
+				<%= link_to l, seats_path %>
+			<% end %></div>
 		</div>
 	<% end %>
 </div>

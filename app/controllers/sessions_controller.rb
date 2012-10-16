@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   end
   def destroy
   	session[:user_id] = nil
-  	redirect_to sessions_url, notice: "Logged out"
+  	redirect_to shows_url, notice: "Logged out"
   end
   def index
     @movies = Movie.all

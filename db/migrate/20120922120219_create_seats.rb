@@ -3,9 +3,9 @@ class CreateSeats < ActiveRecord::Migration
     create_table :seats do |t|
       t.integer :audi_id
       t.string :seat_no
-      t.string :type
+      t.string :seat_type
       t.float :price
-
+      t.boolean :status, :default => false
       t.timestamps
     end
   end
