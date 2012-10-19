@@ -1,36 +1,33 @@
 <div class = "box">
-	<div class = "check">
-		<table>
-			<tr class= "row1">
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-			</tr>
-			<tr class= "row2">
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-			</tr>
-			<tr class= "row3">
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-				<td><input type = "checkbox"/></td>
-			</tr>
-		</table>
+	<%= form_tag bookings_path do %>
+		<div class = "check">
+			<table>
+				<% 3.times do  |row_num| %>
+					<tr >
+            <% 5.times do |col_num| %>
+              <% seat_num = (col_num + 1) + (row_num * 5) %>
+              <% if @seats.include? seat_num.to_s %>
+                <td style = "background-image:url('/assets/grey.jpg')"><%=seat_num%></td>
+              <% else %>
+					      <td class= "row<%= row_num +  1 %>"><%= seat_num %><%= check_box_tag 'selected_seats[]', seat_num %></td>
+              <% end %>
+            <% end %>
+				  </tr>
+        <% end %>
+			</table>
+		</div>
+		<%= hidden_field_tag '', {}, :value => @movie_show.id, :name => 'movie_show_id' %> 
+		<div class = "submit">
+			<%= submit_tag 'BOOK', data: { :confirm => "Finalize your booking?"} %>
+		</div>
+	<% end %>
+		<div class = "legend">
+			<img src = "/assets/red.jpg">Platinum (Rs.250/-)<br>
+			<img src = "/assets/blue.png">Gold (Rs.200/-)<br>
+			<img src = "/assets/green.png">Silver (Rs.150/-)<br>
+			<img src = "/assets/grey.jpg">unavailable
+		</div>
+		<div class = "screen">
+			<b>SCREEN THIS WAY</b>
+		</div>
 	</div>
-	<div class = "legend">
-		<img src = "assets/red.jpg">Platinum (Rs.250/-)<br>
-		<img src = "assets/blue.png">Gold (Rs.200/-)<br>
-		<img src = "assets/green.png">Silver (Rs.150/-)<br>
-		<img src = "assets/grey.jpg">unavailable
-	</div>
-	<div class = "screen">
-		<b>SCREEN THIS WAY</b>
-	</div>
-</div>

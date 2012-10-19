@@ -1,12 +1,12 @@
-<% unless movie_shows.nil? %>
 <div class = "listing">
-	<% location.keys.each do |k|  %>
+	<% location.each do |theatre, movie_shows|  %>
 		<div class = "row">
-			<div class ="theatre_name"><b><u><%= k %></u></b></div>
-			<div class ="timing"><% location[k].each do |l| %>
-				<%= link_to l, seats_path %>
-			<% end %></div>
+			<div class ="theatre_name"><b><u><%= theatre %></u></b></div>
+			<div class ="timing">
+				<% movie_shows.each do |movie_show| %>
+					<%= link_to movie_show.timing.strftime("%H:%M"), movie_show_seats_path(movie_show) %>
+				<% end %>
+			</div>
 		</div>
 	<% end %>
 </div>
-<% end %>

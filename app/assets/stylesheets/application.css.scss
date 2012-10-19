@@ -17,15 +17,52 @@
 	height : 100px;
 	color :white;
 }
+
+#notice{ 
+margin-top: 5px;
+margin-left: 25%;
+width: 50%;
+height: auto;
+padding: 15px;
+color: firebrick;
+border:2px solid firebrick;
+background-color: #e1e2e3;
+text-align: center;
+}
+
+#error{ 
+margin-top: 5px;
+margin-left: 25%;
+width: 50%;
+height: auto;
+padding: 15px;
+color: firebrick;
+border:2px solid firebrick;
+background-color: #e1e2e3;
+text-align: center;
+}
+.error{ 
+margin-top: 5px;
+margin-left: 25%;
+width: 50%;
+height: auto;
+padding: 15px;
+color: firebrick;
+border:2px solid firebrick;
+background-color: #e1e2e3;
+
+}
 .logout {
 	position: relative;
 	top : 45px;
-	left : 430px;
+	left : 410px;
 	color: firebrick;
+	margin-left: 5px;
+
 }
 .name {
 	position :relative;
-	left: 910px;
+	left: 850px;
 	top: 10px;
 	width: 140px;
 	color: black;
@@ -33,8 +70,9 @@
 .change_password {
 	width: 150px; 
 	position: relative;
-	top: -25px;
+	top: -45px;
 	left: 1110px;
+	margin-left: 5px;
 
 	a {
 	color: firebrick;

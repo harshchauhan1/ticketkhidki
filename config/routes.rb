@@ -1,15 +1,20 @@
 Ticketkhidki::Application.routes.draw do
   
-  
+  resources :bookings
+  resources :admins
   #get "users/index"
-  resources :seats
+  resources :movie_shows do
+    resources :seats, :only => [:index, :create]
+  end
   resources :users
   resources :shows do
     collection do
       get :movie_list
     end
   end
-  
+  controller :seats do
+    get 'seats' => :create
+  end
   controller :users do
     get 'change_password' => :change_password
     post 'change_password' => :save_password

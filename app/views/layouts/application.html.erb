@@ -11,15 +11,24 @@
 	<h1><u>TicketKhidki</u></h1>
 	<% if session[:user_id] %>
 		<% user = User.find(session[:user_id]) %>
+		<% if session[:admin] %>
+		<% booking = "Bookings" %>
+		<% else %>
+		<% booking = "My bookings" %>
+		<% end %>
+		<%= link_to booking, bookings_path, :class => "logout" %>
 		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %>
 		<div class = "name">
-			<p> Welcome  <%= user.name %>, </p>
+			<p> Welcome  <%= user.name %>,  Wallet: &#8377; <%= user.wallet.money %> </p>
 		</div>
 		<div class = "change_password">
 			<%= link_to 'change password', change_password_path %>
 		</div> 
 	<% end %>
 </div>
+<% flash.each do |key, msg| %>
+       <%= content_tag :div, msg, :id => key %>
+     <% end %>
 <%= yield %>
 </body>
 </html>

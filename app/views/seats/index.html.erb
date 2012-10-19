@@ -1,2 +1,17 @@
 <h1>Welcome to seat selection,</h1>
-<%= render 'seat_map' %>
+<div id = "info">
+	<b>Movie:</b>
+		<select disabled = "disabled">
+			<option selected = "selected"><%= @movie_show.movie.name %></option>
+		</select>
+	<b>Date:</b>
+		<select disabled = "disabled">
+			<option selected = "selected"><%= @movie_date %></option>
+		</select>
+		<div id = "audi_layout">
+			<button onclick = "show_audi_layout()">Audi layout</button>
+		</div>
+</div>
+<div class = "hidden">
+	<%= render 'seat_map' %>
+</div>

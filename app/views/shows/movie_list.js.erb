@@ -1,1 +1,3 @@
-$('#listings').html("<%= escape_javascript(render :partial => 'shows/listing', :locals => {:movie_shows => @movie_shows, :location => @location})%>")
+<% if @location.any? %>
+$('#listings').html("<%= escape_javascript(render :partial => 'shows/listing', :locals => {:location => @location})%>")
+<% end %>

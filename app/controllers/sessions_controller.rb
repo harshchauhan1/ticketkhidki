@@ -5,18 +5,16 @@ class SessionsController < ApplicationController
   	user = User.find_by_email(params[:email])
   	if user and user.authenticate(params[:password])
   		session[:user_id] = user.id
-      redirect_to shows_url
-  		#redirect_to user_url(user.id)
+      session[:admin] = user.is_admin
+      nxt_page = session[:admin] ? admin_path(user.id) : shows_url
+      redirect_to nxt_page
   	else
-  		redirect_to login_url, alert: "Invalid user/password combination"
+      flash[:error] = "Invalid user/password combination"
+  		redirect_to login_url
   	end
   end
   def destroy
-  	session[:user_id] = nil
+  	reset_session
   	redirect_to shows_url, notice: "Logged out"
-  end
-  def index
-    @movies = Movie.all
-    @date = Date.today
   end
 end

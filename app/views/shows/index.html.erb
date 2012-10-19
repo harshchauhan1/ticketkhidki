@@ -25,10 +25,8 @@
 				<%= select_tag "movie_date", options_for_select(["select date", "Today, " + @today, "Tomorrow, " + @tomorrow, @day_after]), :onchange => "create_shows(this)" %>
 			</div>
 		</div>
-	<% end %>
-	<div id = "listings">
-
-		<%= render :partial => 'shows/listing', :locals => {:movie_shows => @movie_shows, :location => @location} %>
+		<div id = "listings">
 	</div>
+	<% end %>
 </body>
 </html>
