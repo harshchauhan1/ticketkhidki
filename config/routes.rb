@@ -26,6 +26,10 @@ Ticketkhidki::Application.routes.draw do
     delete 'logout' => :destroy
   end
   resources :sessions
+  resources :bye_mail
+  controller :bye_mail do
+    post 'sendmail' => :sendmail
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

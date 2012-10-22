@@ -34,4 +34,22 @@ Ticketkhidki::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+
+
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
+  config.action_mailer.delivery_method = :smtp
+  # ActionMailer::Base.default_content_type = "text/html"
+  config.action_mailer.smtp_settings = {
+        address: "smtp.gmail.com",
+        port: 587,
+        domain: "vinsol.com",
+        authentication: "plain",
+        user_name: "super.ticketkhidki@gmail.com",
+        password: "18tillldeath",
+        enable_starttls_auto: true
+  }
+
 end

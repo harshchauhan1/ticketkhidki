@@ -27,12 +27,15 @@ class UsersController < ApplicationController
   def save_password
     user = User.find(session[:user_id])
     if user && user.authenticate(params[:existing_password])
-      user.password = params[:password]
-      user.password_confirmation = params[:password_confirmation]
-      user.save
-      redirect_to shows_url
+        if user.update_attributes(:password => params[:password], :password_confirmation => params[:password_confirmation])
+          redirect_to shows_url
+        else
+          @errors = user.errors.messages
+          render 'users/change_password'
+        end
     else
-      redirect_to change_password_url, alert: "Invalid current password"
+      @errors = "Invalid current password"
+      render 'users/change_password'
     end
   end
 end

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   validates :password, :presence => true
   validates :password, :length => {:within => 8..20}, :unless => proc { |user| user.password.blank? }
-  validates :password_confirmation, :presence => true, :unless => proc { |user| user.password.blank?  }
+  #validates :password_confirmation, :presence => true, :unless => proc { |user| user.password.blank?  }
   validates :email, :format => { :with => /^([A-z])+(\.?\w+)*@[A-z]+(\.[A-z]{2,4}){1,2}/ }
   has_many :bookings
   has_one :wallet
@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def create_wallet
-    Wallet.create(:money => 0)
+    u = User.last
+    u.wallet = Wallet.create(:money => 10000)
   end
 end

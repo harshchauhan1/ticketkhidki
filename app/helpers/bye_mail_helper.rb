@@ -1,0 +1,2 @@
+module ByeMailHelper
+end
