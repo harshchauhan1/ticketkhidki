@@ -1,7 +1,12 @@
 Hi!
 
-You are having one email message
-
-<%= @message %>
-
-Thanks
+Thank you for booking your tickets at ticketkhidki.com.
+here are your booking details--
+<ul style = "list-style: none">
+	<li><b>Name       :    </b><%= @user %></li>
+	<li><b>Movie      :    </b><%= @movie %></li>
+	<li><b>Location   :    </b><%= @location %>
+	<li><b>Timimg     :    </b><%= @timing %></li>
+	<li><b>Seat num      :    </b><%= @seats %></li>
+	<li><b>Total      :    </b><%= @total %></li>
+</ul>

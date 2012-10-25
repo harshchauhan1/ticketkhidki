@@ -1,4 +1,8 @@
 <h1>Welcome to seat selection,</h1>
+<div id = "movie_poster">
+	<% movie_poster = @movie_show.movie.image_url %> 
+	<%= image_tag(movie_poster) %>
+</div>
 <div id = "info">
 	<b>Movie:</b>
 		<select disabled = "disabled">

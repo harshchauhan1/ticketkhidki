@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
           booking.seat_num = @seats.join(',')
           booking.save
     			Booking.book_seats(@seats, movie_show)
-          Emailer.contact(User.find_by_id(booking.user_id).email, "your booking", "#{booking.inspect}").deliver
+          Emailer.contact(booking.user.email, "Your booking details", "#{booking.id}").deliver
           return if request.xhr?
           redirect_to shows_path, :notice => "Your Booking id is #{booking.id}"
   		  else

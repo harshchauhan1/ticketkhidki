@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :genre, :name, :release_date
+  attr_accessible :genre, :name, :release_date, :image_url
   has_many :movie_shows
   has_and_belongs_to_many :theatres
   def self.movie_arr
