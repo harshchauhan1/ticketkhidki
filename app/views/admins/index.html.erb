@@ -1,0 +1,24 @@
+<body onload = "start()">
+<%= form_tag log_list_admins_path, :remote => true, :method => 'post' do %>
+	<div class = "selection">
+		<div class = "option">
+			<input type = "radio" class = "user_select" name = "group1" onclick = "activate()"/>
+			<% user = User.user_arr %>
+			<% user.unshift("select user") %>
+			<% user.delete("mr_h") %>
+			<%= select_tag "user", options_for_select(user), :class => "user_box" %>
+		</div>
+		<div class = "option">
+			<input type = "radio" class = "movie_select" name = "group1" onclick = "activate()"/>
+			<% movie = Movie.movie_arr %>
+            <% movie.unshift("select movie") %>
+            <%= select_tag "movie", options_for_select(movie), :class => "movie_box" %>
+		</div>
+		<div class ="option">
+			<%= submit_tag "Get Details" %>
+		</div>
+	</div>
+<% end %>
+<div id = "log_details">
+</div>
+</body>

@@ -16,7 +16,6 @@ class ShowsController < ApplicationController
 	def movie_list
 		@location = Movie.movie_details(params[:movie])
 		session[:movie] = params[:movie]
-		session[:movie_date] = params[:movie_date]
-				
+		session[:movie_date] = params[:movie_date]	
 	end
 end

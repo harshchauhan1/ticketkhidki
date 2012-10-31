@@ -12,6 +12,14 @@ Ticketkhidki::Application.routes.draw do
       get :movie_list
     end
   end
+ 
+ resources :admins do
+    collection do
+      post :log_list
+      post :add_shows 
+    end
+  end
+
   controller :seats do
     get 'seats' => :create
   end

@@ -1,4 +1,5 @@
-<div class = "outer_div">
+
+	<div class = "outer_div">
   <div align = "center">
 <table class = "bookings_table" border =2>
   <tr>
@@ -32,7 +33,8 @@
       Date
     </th>
   </tr>
-	<% @bookings.each do |booking| %>
+  <% bookings.each do |each_booking| %>
+	<% each_booking.each do |booking| %>
     <tr>
       <td>
         <%= booking.id %>
@@ -64,6 +66,7 @@
         <%= booking.created_at.ctime %>
       </td>      
     </tr>
+  <% end %>
   <% end %>
 </table>
 </div>

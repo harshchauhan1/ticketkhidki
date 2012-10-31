@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.user_arr
+    all.collect{|user| user.name}
+  end
+
   def create_wallet
     u = User.last
     u.wallet = Wallet.create(:money => 10000)

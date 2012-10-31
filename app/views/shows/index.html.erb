@@ -1,7 +1,7 @@
 <html>
 <head>
 </head>
-<body>
+<body onload = "disable_date()">
 	<% if !session[:user_id] %>
 <div class = "main">
     <%= link_to 'Sign In', login_path	 %>
@@ -18,15 +18,15 @@
 			<div class = "option">
 				<% movie = Movie.movie_arr %>
 				<% movie.unshift("select movie") %>
-				<%= select_tag "movie", options_for_select(movie) %>
+				<%= select_tag "movie", options_for_select(movie), :onchange => "enable_date()", :class => "movie_box" %>
 			</div>
 			<div class = "option">
 				<% @today = @date.strftime("%d %b") %> <% @tomorrow = (@date+1).strftime(" %d %b") %> <% @day_after = (@date+2).strftime("%A %d %b") %>
-				<%= select_tag "movie_date", options_for_select(["select date", "Today, " + @today, "Tomorrow, " + @tomorrow, @day_after]), :onchange => "create_shows(this)" %>
+				<%= select_tag "movie_date", options_for_select(["select date", "Today, " + @today, "Tomorrow, " + @tomorrow, @day_after]), :onchange => "create_shows(this)", :class => "date_box" %>
 			</div>
 		</div>
 		<div id = "listings">
-	</div>
+	    </div>
 	<% end %>
 </body>
 </html>

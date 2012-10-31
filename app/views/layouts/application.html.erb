@@ -12,11 +12,10 @@
 	<% if session[:user_id] %>
 		<% user = User.find(session[:user_id]) %>
 		<% if session[:admin] %>
-		<% booking = "Bookings" %>
+		<%= link_to "Bookings Log", admins_path, :class => "logout" %>
 		<% else %>
-		<% booking = "My bookings" %>
+		<%= link_to "My Bookings", bookings_path, :class => "logout" %>
 		<% end %>
-		<%= link_to booking, bookings_path, :class => "logout" %>
 		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %>
 		<div class = "name">
 			<p> Welcome  <%= user.name %>,  Wallet: &#8377; <%= user.wallet.money %> </p>

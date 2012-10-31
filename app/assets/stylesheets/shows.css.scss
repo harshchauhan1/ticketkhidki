@@ -28,3 +28,16 @@
 	padding-right: 30px;
 	}
 }
+.option {
+	select {
+	background: firebrick;
+	color: white;
+	height: 25px;
+	}
+}
+select option {
+	background: firebrick;
+	color: white;
+	height: 25px;
+	/*margin: 25px;*/
+	}
