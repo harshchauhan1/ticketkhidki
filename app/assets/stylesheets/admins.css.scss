@@ -4,10 +4,19 @@ border: solid 2px firebrick;
 position: relative;
 top: 100px;
 left: 100px;
-width: 500px;	
+width: 500px;
+background: lightgrey;	
 }
 #add_shows {
 	position: relative;
 	
 	left: 100px;
+}
+select {
+	background: firebrick;	
+	color: white;
+}
+.theatre_log_page{
+	position: relative;
+	top: 100px;
 }

@@ -1,9 +1,13 @@
 class ShowsController < ApplicationController
-	before_filter {  if session[:admin] 
-		flash[:error] = "You are not authorized to view this page."
-		redirect_to admin_path(session[:user_id])
+	before_filter :require_user
+
+
+	def require_user
+		if session[:admin] 
+			flash[:error] = "You were trying to view a page you are not authorized to view."
+			redirect_to admin_path(session[:user_id])
+		end
 	end
-		}
 	def index
 		@movies = Movie.all
     	@date = Date.today

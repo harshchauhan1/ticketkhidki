@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :bookings
   has_one :wallet
   after_create :create_wallet
-
+  
   has_secure_password
 
   def assign(values, options = {})
@@ -27,4 +27,6 @@ class User < ActiveRecord::Base
     u = User.last
     u.wallet = Wallet.create(:money => 10000)
   end
+
+
 end

@@ -9,3 +9,6 @@ function seat_submit () {
 	comsole.log(form)
 	//form.submit()
 }
+function hide () {
+	$('#outer').removeClass("outer_modal").hide() 
+}

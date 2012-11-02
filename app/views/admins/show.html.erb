@@ -1,9 +1,9 @@
 <div id = "show_box">
-    <div style= "text-align: center"><h1> Add Shows</h1></div>
+    <div style= "text-align: center"><h1><u>Add Shows</u></h1></div>
 <div id = "add_shows">
     <%= form_tag add_shows_admins_path do %>
         <div>
-            <div><b>Enter Theatre  :</b></div><%= text_field_tag "theatre" %>
+            <div><b>Enter Theatre  :</b></div><% theatre = Theatre.theatre_arr %><%= select_tag "theatre", options_for_select(theatre) %>
         </div>
         <div>
             <div><b>Enter Movie    :</b></div><%= text_field_tag "movie" %>

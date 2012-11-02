@@ -1,5 +1,6 @@
+<div class = "no_seats_selected"><%= label_tag :error, '', :id => 'error_label', :class => "error_class" %></div>
 <div class = "box">
-	<%= form_tag bookings_path do %>
+	<%= form_tag seats_confirmation_movie_show_seats_path(@movie_show.id), :remote => true, :method => :get do %>
 		<div class = "check">
 			<table>
 				<% 3.times do  |row_num| %>

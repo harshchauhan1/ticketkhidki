@@ -4,4 +4,8 @@ class Theatre < ActiveRecord::Base
   has_and_belongs_to_many :movies
 
 
+  def self.theatre_arr
+    all.collect{|theatre| theatre.location}
+  end
+
 end

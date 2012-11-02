@@ -28,3 +28,8 @@ function create_log () {
 	form = $('form')
 	form.submit()
 }
+
+function theatre_log () {
+ 	form = $('form')
+	form.submit()
+}

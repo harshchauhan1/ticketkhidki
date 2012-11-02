@@ -1,0 +1,8 @@
+<%= form_tag bookings_path do %>
+	<p>No. of seats   : <%= session[:seats].count %></p>
+	<p>Total          : Rs. <%= session[:total] %></p>
+	<p>Movie          : <%= movie_show.movie.name %></p>
+	<%= hidden_field '', :movie_show_id, :value => movie_show.id %>
+<div class = "button_form"><%= submit_tag "submit", :class => "form_button" %></div>
+<% end %>
+<div class = "button_form"><%= button_tag "cancel", :class => "form_button", :onclick => "hide()" %></div>	

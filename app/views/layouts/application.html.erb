@@ -13,6 +13,7 @@
 		<% user = User.find(session[:user_id]) %>
 		<% if session[:admin] %>
 		<%= link_to "Bookings Log", admins_path, :class => "logout" %>
+		<div class = "theatre_log"><%= link_to "Theatre_log", theatre_log_admins_path %></div>
 		<% else %>
 		<%= link_to "My Bookings", bookings_path, :class => "logout" %>
 		<% end %>

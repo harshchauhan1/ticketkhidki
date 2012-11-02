@@ -1,10 +1,14 @@
 Ticketkhidki::Application.routes.draw do
   
   resources :bookings
-  resources :admins
+ # resources :admins
   #get "users/index"
   resources :movie_shows do
-    resources :seats, :only => [:index, :create]
+    resources :seats, :only => [:index, :create] do
+      collection do
+        get :confirm_booking, :as => 'seats_confirmation'
+      end
+    end
   end
   resources :users
   resources :shows do
@@ -17,12 +21,11 @@ Ticketkhidki::Application.routes.draw do
     collection do
       post :log_list
       post :add_shows 
+      get :theatre_log
+      post :create_theatre_log
     end
   end
-
-  controller :seats do
-    get 'seats' => :create
-  end
+  
   controller :users do
     get 'change_password' => :change_password
     post 'change_password' => :save_password

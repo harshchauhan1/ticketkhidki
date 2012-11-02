@@ -3,5 +3,12 @@ class Audi < ActiveRecord::Base
   belongs_to :theatre
   has_many :seats
   has_many :movie_shows
+  # after_create :store_session_id
 
+
+
+  # def store_session_id
+  # 	a = Audi.last
+  # 	a.capacity = session[:id]
+  # end
 end

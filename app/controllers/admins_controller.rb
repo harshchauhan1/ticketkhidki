@@ -1,4 +1,13 @@
 class AdminsController < ApplicationController
+	before_filter :require_admin
+
+	def require_admin
+		if !session[:admin] 
+			flash[:error] = "You were trying to view a page you are not authorized to view."
+			redirect_to shows_path
+		end
+	end
+		
 	def show
 		
 	end
@@ -22,6 +31,24 @@ class AdminsController < ApplicationController
 	end
 
 	def add_shows
-	kjbk 
+		nnn
+		@theatre = params[:theatre]
+		@movie = params[:movie]
+		@show_time = params[:showtime]
+		theatre = Theatre.find_by_location(@theatre)
+		theatre.movies.create(:name => "@movie")
+		m = Movie.last
+		m.movie_shows.create(:timing => @show_time)
+	end
+
+	def create_theatre_log
+		theatre = Theatre.find_by_location(params[:theatre])
+		m = theatre.movies
+		m.each do |movie|
+			@shows << movie.movie_shows
+		end
+	end
+
+	def theatre_log
 	end
 end
