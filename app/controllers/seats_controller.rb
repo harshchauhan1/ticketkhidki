@@ -1,4 +1,13 @@
 class SeatsController < ApplicationController
+	before_filter :require_user
+
+
+	def require_user
+		if session[:admin] 
+			flash[:error] = "You were trying to view a page you are not authorized to view."
+			redirect_to admin_path(session[:user_id])
+		end
+	end
 	def index
 		@movie_show = MovieShow.find(params[:movie_show_id])
 		@movie_date = session[:movie_date]

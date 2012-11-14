@@ -3,7 +3,7 @@ class CreateTheatres < ActiveRecord::Migration
     create_table :theatres do |t|
       t.integer :no_of_audis
       t.string :location
-
+      
       t.timestamps
     end
   end

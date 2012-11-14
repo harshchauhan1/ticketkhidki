@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Ticketkhidki</title>
-  <%= stylesheet_link_tag    "application", params[:controller] %>
-  <%= javascript_include_tag "application", params[:controller] %>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -13,9 +13,11 @@
 		<% user = User.find(session[:user_id]) %>
 		<% if session[:admin] %>
 		<%= link_to "Bookings Log", admins_path, :class => "logout" %>
-		<div class = "theatre_log"><%= link_to "Theatre_log", theatre_log_admins_path %></div>
+		<div class = "theatre_log"><%= link_to "Theatre log", theatre_log_admins_path %></div>
+		<div class = "home"><%= link_to 'Home', admin_path(session[:user_id]) %></div>
 		<% else %>
 		<%= link_to "My Bookings", bookings_path, :class => "logout" %>
+		<div class = "home"><%= link_to 'Home', shows_path%></div>
 		<% end %>
 		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %>
 		<div class = "name">

@@ -25,7 +25,12 @@ Ticketkhidki::Application.routes.draw do
       post :create_theatre_log
     end
   end
-  
+  resources :theatres do
+    collection do
+      post :add_theatre
+      get :audis
+    end
+  end
   controller :users do
     get 'change_password' => :change_password
     post 'change_password' => :save_password

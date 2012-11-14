@@ -13,4 +13,14 @@ class Emailer < ActionMailer::Base
       @from = 'no-reply@yourdomain.com'
       mail(:to => @recipients, :subject => @subject)
    end
+
+   def user_registered (recipient, subject, message)
+      curr_user = User.find(message.to_i)
+      @subject = subject
+      @email = curr_user.email
+      @name = curr_user.name
+      @recipients = recipient
+      @from = 'no-reply@yourdomain.com'
+      mail(:to => @recipients, :subject => @subject)
+   end
 end

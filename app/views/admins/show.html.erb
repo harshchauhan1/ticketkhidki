@@ -1,10 +1,12 @@
 <div id = "show_box">
     <div style= "text-align: center"><h1><u>Add Shows</u></h1></div>
 <div id = "add_shows">
-    <%= form_tag add_shows_admins_path do %>
+    <%= form_tag shows_path do %>
         <div>
-            <div><b>Enter Theatre  :</b></div><% theatre = Theatre.theatre_arr %><%= select_tag "theatre", options_for_select(theatre) %>
+            <div><b>Select Theatre  :</b> <b style ="position: relative; left: 18px;">Select Audi :</b></div><% theatre = @theatres.map { |t| [t.location, t.id] }%><% theatre.unshift("select")%><%= select_tag "theatre", options_for_select(theatre), :onchange => "get_audis(this)", :id => "theatre" %>
+            <%= select_tag "audi", options_for_select(["select"]), :class => "audi", :id => "hhh" %>
         </div>
+
         <div>
             <div><b>Enter Movie    :</b></div><%= text_field_tag "movie" %>
         </div>
@@ -12,11 +14,27 @@
             <div><b>Enter ShowTime :</b></div><%= select_tag "showtime", options_for_select(["09:00", "13:00", "21:00"]) %>
         </div>
         <div>
-            <div><b>Enter Date     :</b></div><%= text_field_tag "date"%>
+            <div><b>Enter Date     :</b></div><%= text_field_tag "date", '', :class => "show_calender" %>
         </div>
         <div>
             <%= submit_tag "Add Show" %>
         </div>
     <% end %>
 </div>
+</div>
+<div id = "theatre_box">
+    <div style= "text-align: center"><h1><u>Manage theatres</u></h1></div>
+    <div id= "add_theatre">
+        <%= form_tag theatres_path do %>
+            <div class = "tfield"><b>Enter Theatre Location :</b></div><div class ="tfield"><%= text_field_tag "theatre_location"%></div><br>
+            <div class ="tfield"><b>No of Audis :</b></div><div class ="tfield"><%= select_tag "audis", options_for_select(["1","2", "3", "4", "5", "6", "7", "8", "9", "10"])%></div>
+            <div style = "position: relative; top: 50px;"><%= submit_tag "Add Theatre" %></div>
+        <% end %>
+    </div>
+    <div id= "remove_theatre">
+        <%= form_tag theatre_path, :method => 'delete' do %>
+            <div class = "tfield"><b>Enter Theatre Location :</b></div><div><% theatre = Theatre.theatre_arr %><%= select_tag "theatre", options_for_select(theatre) %></div><br>
+            <div style = "position: relative; top: 95px;"><%= submit_tag "Remove Theatre" %></div>
+        <% end %>
+    </div>
 </div>

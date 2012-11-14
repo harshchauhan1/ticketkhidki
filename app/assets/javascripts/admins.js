@@ -33,3 +33,28 @@ function theatre_log () {
  	form = $('form')
 	form.submit()
 }
+
+$(document).ready( function () {
+	$('#ui-datpicker-div').addClass("hidden")
+  	$('.show_calender').datepicker()
+  })
+
+
+function get_audis (element) {
+	theatre_id = $(element).val()
+	 $('#hhh').children().each( function() {
+		$(this).remove()
+	}) 
+	if ($(element).val() != "select") {
+		$.ajax({
+	        url: "/theatres/audis?theatre_id=" + theatre_id,
+	        type: 'GET',
+	        dataType: 'json',
+	        success: function (data) {
+	        	for (var i = 0; i < data.length; i++) {
+	        		$("#hhh").append($("<option>" + data[i]["id"] + "</option>"))	
+	        	};
+	        }
+      	});
+	} 
+}

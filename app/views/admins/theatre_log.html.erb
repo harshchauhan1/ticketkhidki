@@ -1,5 +1,5 @@
-<%= form_tag create_theatre_log_admins_path do %>
-<div class = "theatre_log_page"><b>Enter Theatre  :</b><% theatre = Theatre.theatre_arr %><% theatre.unshift("select theatre")%><%= select_tag "theatre", options_for_select(theatre) %>
+<%= form_tag create_theatre_log_admins_path, :remote => true do %>
+<div class = "theatre_log_page"><b>Enter Theatre  :</b><% theatre = Theatre.theatre_arr %><%= select_tag "theatre", options_for_select(theatre) %>
 <%= submit_tag "get details" %></div>
 <% end %>
 <div id = "tlog"></div>

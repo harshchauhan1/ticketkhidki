@@ -3,7 +3,9 @@ class Movie < ActiveRecord::Base
   has_many :movie_shows
   has_and_belongs_to_many :theatres
   def self.movie_arr
-  	all.collect{|movie| movie.name}
+    movie = []
+  	movie  = all.collect{|movie| movie.name}
+    movie.unshift("select movie")
   end
   def self.movie_details (movie_name)
   	movie = Movie.find_by_name(movie_name)

@@ -1,3 +1,2 @@
-<% if @shows.any? %>
-$('#tlog').html("<%= escape_javascript(render :partial => 'admins/tlog', :locals => {:shows => @shows})%>")
-<% end %>
+
+$('#tlog').html("<%= escape_javascript(render :partial => 'admins/tlog', :locals => {:shows => @shows, :theatre => @bookings})%>")

@@ -9,7 +9,7 @@ class AdminsController < ApplicationController
 	end
 		
 	def show
-		
+		@theatres = Theatre.scoped
 	end
 	def index
 		@bookings = Booking.all
@@ -30,25 +30,14 @@ class AdminsController < ApplicationController
 		end
 	end
 
-	def add_shows
-		nnn
-		@theatre = params[:theatre]
-		@movie = params[:movie]
-		@show_time = params[:showtime]
-		theatre = Theatre.find_by_location(@theatre)
-		theatre.movies.create(:name => "@movie")
-		m = Movie.last
-		m.movie_shows.create(:timing => @show_time)
-	end
-
 	def create_theatre_log
+		jn
 		theatre = Theatre.find_by_location(params[:theatre])
 		m = theatre.movies
-		m.each do |movie|
-			@shows << movie.movie_shows
-		end
+		@bookings = Booking.theatre_revenue_report(m)
 	end
 
 	def theatre_log
+		
 	end
 end

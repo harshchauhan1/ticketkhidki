@@ -6,7 +6,7 @@
 	font-size: 17.5px;
 	border: solid 1px firebrick;
 }
-fieldset {
+#register_fieldset {
 	width: 800px;
 	position: relative;
 	left: 230px;
@@ -44,4 +44,10 @@ legend {
 	position: relative;
 	top: -35px;
 	left: 650px;
+}
+fieldset {
+	position: relative;
+	top: 50px;
+	left: 170px;
+	width: 900px;
 }
