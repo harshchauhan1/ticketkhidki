@@ -12,7 +12,7 @@ class Theatre < ActiveRecord::Base
 
   def self.add_new (no_of_audis, theatre_location)
   	i = 1
-  	bool = false
+  	msg = String.new
   	num = no_of_audis.to_i
   	if theatre_location.strip.length > 0
 	  	Theatre.create(:no_of_audis => num, :location => theatre_location)
@@ -21,20 +21,23 @@ class Theatre < ActiveRecord::Base
 	  		t.audis.create(:capacity => 15)
 	  		i = i + 1
 	  	end
-	  	bool = true
+      msg = "#{theatre_location.capitalize} has been added succesfully to theatres"
 	else
-	  	bool = false
+	  	msg = "something went wrong, make sure you enter correct info."
   	end
-  	return bool
+  	return msg
   end
 
   def self.remove_old (theatre_location)
+    if theatre_location == "select"
+      return "Please select a theatre!"
+    end
   	theatre = Theatre.find_by_location(theatre_location)
   	theatre.delete
     if theatre
-      return true
+      return "Something went wrong, try deleting the theatre agian!"
     else
-      return false
+      return "theatre deleted successfully!"
     end
   end	
 end

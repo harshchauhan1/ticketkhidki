@@ -26,7 +26,7 @@ class MovieShow < ActiveRecord::Base
       return "Invalid date selection!"
     end
     if !movie
-      Movie.create(:name => args[2])
+      Movie.create(:name => movie_name)
     end
     # if MovieShow.where("audi_id = ? AND timing =?", args[1], timing)
     #   return false, "Show already exists"
@@ -34,7 +34,6 @@ class MovieShow < ActiveRecord::Base
     date_from.to_date.upto(date_to.to_date) do |day|
       show_tim_arr.each do |show_time|
         timing = DateTime.parse(day.to_s + " " + show_time.to_s)
-        logger.info(timing)
         show = movie.movie_shows.create(:timing => timing)
         audi.movie_shows << show
       end
