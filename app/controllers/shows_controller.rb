@@ -24,15 +24,10 @@ class ShowsController < ApplicationController
 	end
 
 	def create
-		
 		date_to = params[:date_to].to_s
 		date_from = params[:date_from].to_s
 		show_tim_arr = [params[:showtime1], params[:showtime2], params[:showtime3], params[:showtime4]]
-		success, msg = MovieShow.add_show(params[:theatre], params[:audi], params[:movie], show_tim_arr, date_to, date_from)
-		if success
-			redirect_to admin_path(session[:user_id]), :notice => "show added succesfully"
-		else
+		msg = MovieShow.add_show(params[:theatre], params[:audi], params[:movie], show_tim_arr, date_to, date_from)
 			redirect_to admin_path(session[:user_id]), :notice => "#{msg}"
-		end
 	end
 end

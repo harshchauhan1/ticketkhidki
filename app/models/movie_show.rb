@@ -20,10 +20,10 @@ class MovieShow < ActiveRecord::Base
     audi = Audi.find(audi)
     movie = Movie.find_by_name(movie_name)
      if (show_tim_arr.uniq.length != show_tim_arr.length)
-      return false, "Select distinct show timings!"
+      return "Select distinct show timings!"
     end
     if Date.parse(date_to) < Date.parse(date_from) 
-      return false, "Invalid date selection!"
+      return "Invalid date selection!"
     end
     if !movie
       Movie.create(:name => args[2])
@@ -39,7 +39,7 @@ class MovieShow < ActiveRecord::Base
         audi.movie_shows << show
       end
     end
-    return true
+    return "show added succesfully"
   end 
 
 end
