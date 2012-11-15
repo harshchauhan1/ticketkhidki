@@ -33,7 +33,7 @@ class MovieShow < ActiveRecord::Base
     # end
     date_from.to_date.upto(date_to.to_date) do |day|
       show_tim_arr.each do |show_time|
-        timing = Time.parse(day.to_s + " " + show_time.to_s)
+        timing = DateTime.parse(day.to_s + " " + show_time.to_s)
         logger.info(timing)
         show = movie.movie_shows.create(:timing => timing)
         audi.movie_shows << show
