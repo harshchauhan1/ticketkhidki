@@ -12,16 +12,16 @@
 	<% if session[:user_id] %>
 		<% user = User.find(session[:user_id]) %>
 		<% if session[:admin] %>
-		<%= link_to "Bookings Log", admins_path, :class => "logout" %>
+		<div class = "link" id = "booking"><%= link_to "Bookings Log", admins_path, :class => "logout" %></div>
 		<div class = "theatre_log"><%= link_to "Theatre log", theatre_log_admins_path %></div>
 		<div class = "home"><%= link_to 'Home', admin_path(session[:user_id]) %></div>
 		<% else %>
-		<%= link_to "My Bookings", bookings_path, :class => "logout" %>
+		<div class = "link" id = "booking"><%= link_to "My Bookings", bookings_path, :class => "logout" %></div>
 		<div class = "home"><%= link_to 'Home', shows_path%></div>
 		<% end %>
-		<%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %>
+		<div class = "link" id = "logout"><%= link_to 'Logout', logout_path, method: :delete, :class => "logout" %></div>
 		<div class = "name">
-			<p> Welcome  <%= user.name %>,  Wallet: &#8377; <%= user.wallet.money %> </p>
+			<p> Welcome  <%= user.name.capitalize %>,</p> <p> Wallet: &#8377; <%= user.wallet.money %> </p>
 		</div>
 		<div class = "change_password">
 			<%= link_to 'change password', change_password_path %>

@@ -36,7 +36,8 @@ function theatre_log () {
 
 $(document).ready( function () {
 	$('#ui-datpicker-div').addClass("hidden")
-  	$('.show_calender').datepicker()
+	$('.show_calender').datepicker({dateFormat : 'dd/mm/yy'})
+  	
   })
 
 
@@ -57,4 +58,13 @@ function get_audis (element) {
 	        }
       	});
 	} 
+}
+
+function show_timing (element) {
+	console.log($(element).prev().removeClass("hidden"))
+	$(element).addClass("hidden")
+}
+
+function hide_default (element) {
+	console.log($(element).children(":first").remove())
 }

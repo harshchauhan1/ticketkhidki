@@ -66,16 +66,18 @@ background-color: #e1e2e3;
 
 }
 .name {
-	position :relative;
-	left: 850px;
-	top: 10px;
-	width: 140px;
-	color: black;
+	position :absolute;
+	left: 800px;
+	top: 50px;
+	width: 200px;
+	color: white;
+	font-weight: bold;
+	font-family:"Times New Roman",Georgia,Serif;
 }
 .change_password {
 	width: 150px; 
-	position: relative;
-	top: -45px;
+	position: absolute;
+	top: 125px;
 	left: 1110px;
 	margin-left: 5px;
 
@@ -102,4 +104,17 @@ body {
 	a {
 	color: firebrick;
 	}
+}
+.link {
+	float: left;
+}
+
+#logout {
+	position: absolute;
+	left: 665px;
+}
+
+#booking {
+	position: absolute;
+	left: 565px;	
 }

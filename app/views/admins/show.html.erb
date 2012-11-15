@@ -8,13 +8,17 @@
         </div>
 
         <div>
-            <div><b>Enter Movie    :</b></div><%= text_field_tag "movie" %>
+            <div><b>Enter Movie    :</b></div><%= text_field_tag "movie" %><input type="file" name="datafile" size="40">
         </div>
         <div>
-            <div><b>Enter ShowTime :</b></div><%= select_tag "showtime", options_for_select(["09:00", "13:00", "21:00"]) %>
+            <div><b>Enter ShowTime :</b></div><%= select_tag "showtime1", options_for_select(["select", "09:00", "13:00", "18:00", "21:00"]), :onclick => "hide_default(this)"%>
         </div>
+        <div class ="add_show"><%= select_tag "showtime2", options_for_select(["select", "09:00", "13:00", "18:00", "21:00"]), :class => "hidden", :onclick => "hide_default(this)"%><a href = "#" onclick = "show_timing(this)">Add another</a></div>
+        <div class ="add_show"><%= select_tag "showtime3", options_for_select(["select", "09:00", "13:00", "18:00", "21:00"]), :class => "hidden", :onclick => "hide_default(this)"%><a href = "#" onclick = "show_timing(this)">Add another</a></div>
+        <div class ="add_show"><%= select_tag "showtime4", options_for_select(["select", "09:00", "13:00", "18:00", "21:00"]), :class => "hidden", :onclick => "hide_default(this)"%><a href = "#" onclick = "show_timing(this)">Add another</a></div>
         <div>
-            <div><b>Enter Date     :</b></div><%= text_field_tag "date", '', :class => "show_calender" %>
+            <div><b>From     :</b></div><%= text_field_tag "date_from", '', :class => "show_calender" %>
+            <b>To     :</b><%= text_field_tag "date_to", '', :class => "show_calender" %>
         </div>
         <div>
             <%= submit_tag "Add Show" %>

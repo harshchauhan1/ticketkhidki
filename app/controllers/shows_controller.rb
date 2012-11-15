@@ -9,7 +9,6 @@ class ShowsController < ApplicationController
 		end
 	end
 	def index
-		
 		@movies = Movie.all
     	@date = Date.today
     	respond_to do |format|
@@ -25,10 +24,15 @@ class ShowsController < ApplicationController
 	end
 
 	def create
-	 
-		success = MovieShow.add_show(params[:theatre], params[:audi], params[:movie], params[:showtime], params[:date])
+		
+		date_to = params[:date_to].to_s
+		date_from = params[:date_from].to_s
+		show_tim_arr = [params[:showtime1], params[:showtime2], params[:showtime3], params[:showtime4]]
+		success, msg = MovieShow.add_show(params[:theatre], params[:audi], params[:movie], show_tim_arr, date_to, date_from)
 		if success
 			redirect_to admin_path(session[:user_id]), :notice => "show added succesfully"
+		else
+			redirect_to admin_path(session[:user_id]), :notice => "#{msg}"
 		end
 	end
 end

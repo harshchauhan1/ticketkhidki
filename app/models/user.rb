@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   #validates :password_confirmation, :presence => true, :unless => proc { |user| user.password.blank? || user.password.length < 8  }
   validates :email, :format => { :with => /^([A-z])+(\.?\w+)*@[A-z]+(\.[A-z]{2,4}){1,2}/ }
   has_many :bookings
-  has_one :wallet
+  has_one :wallet, :dependent => :destroy
   after_create :create_wallet
   
   has_secure_password
