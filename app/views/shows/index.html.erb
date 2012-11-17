@@ -8,6 +8,7 @@
     <%= link_to 'Register', new_user_path %>
 </div>
 <% end %>
+<div id = "listing_choice">movies<input type = "radio" name = "choice" onclick = "show_menu('movies', 'theatres')"/>theatres<input type = "radio" value = "movies" name = "choice" onclick ="show_menu('theatres', 'movies')"/></div>
 	<%= form_tag movie_list_shows_path, :remote => true, :method => 'get' do %>
 		<div class = "selection">
 			<div class = "option">
@@ -15,12 +16,18 @@
 					<option>Delhi/NCR</option>
 				</select>
 			</div>
-			<div class = "option">
+			<div class = "option" id = "movies">
 				<% movie = Movie.movie_arr %>
-				<%= select_tag "movie", options_for_select(movie), :onchange => "enable_date()", :class => "movie_box" %>
+				<%= select_tag "movie", options_for_select(movie), :onchange => "enable_date(this)", :class => "movie_box" %>
+			</div>
+			<div class = "option" id = "theatres">
+				<% theatre = Theatre.theatre_arr %>
+				<% theatre.shift() %>
+				<% theatre.unshift("select theatre") %>
+				<%= select_tag "theatre", options_for_select(theatre), :onchange => "enable_date(this)" %>
 			</div>
 			<div class = "option">
-				<% @today = @date.strftime("%d %b") %> <% @tomorrow = (@date+1).strftime(" %d %b") %> <% @day_after = (@date+2).strftime("%A %d %b") %>
+				<% @today = @date.strftime("%d %b") %> <% @tomorrow = (@date+1).strftime(" %d %b") %> <% @day_after = (@date+2).strftime("%A, %d %b") %>
 				<%= select_tag "movie_date", options_for_select(["select date", "Today, " + @today, "Tomorrow, " + @tomorrow, @day_after]), :onchange => "create_shows(this)", :class => "date_box" %>
 			</div>
 		</div>

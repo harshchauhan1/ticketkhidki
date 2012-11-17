@@ -1,15 +1,14 @@
 function disable_date () {
-console.log($('.movie_box').val())
- if ($('.movie_box').val() == "select movie") {
+ if ($('.movie_box').val() == "select movie" || $('#theatre').val() == "select theatre") {
  	
+ 	$('.date_box').find("option:first").attr("selected", "selected")
  	$('.date_box')[0].disabled = true
  }
 }
 
-function enable_date () {
-	console.log('hello')
- if ($('.movie_box').val() == "select movie") {
- 	console.log("in if")
+function enable_date (element) {
+	
+ if ($(element).val() == "select movie" || $(element).val() == "select theatre") {
  	$('.date_box')[0].disabled = true
  	$('.date_box option[value="select date"]').attr("selected", "selected");
  }else {
@@ -19,13 +18,24 @@ function enable_date () {
 
 function create_shows (element) {
   form = $('form')
-  console.log($(element).val())
-  //$.get(form.attr('action'), form.serialize(), null, "script")
   if (($(element).val()) != "select date") {
     form.submit()
   }
 }
 
 function ticket_book (element) {
-  console.log (element)
+  
+}
+
+$(document).ready( function () {
+	$("#theatres").addClass("hidden")
+	$("#listing_choice input:first-child").attr("checked", "checked")
+
+})
+
+function show_menu(element_to_show, element_to_hide) {
+	$("#" + element_to_hide).children().find("option:first").attr("selected", "selected")
+	disable_date()
+	$("#" + element_to_show).removeClass("hidden")
+	$("#" + element_to_hide).addClass("hidden")
 }

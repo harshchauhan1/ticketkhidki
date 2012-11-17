@@ -6,7 +6,7 @@ class Emailer < ActionMailer::Base
       @user = @message.user.name
       @movie = @message.movie_show.movie.name 
 	  @location = @message.movie_show.audi.theatre.location
-	  @timing = @message.movie_show.timing
+	  @timing = @message.movie_show.timing.strftime("%H:%M %d/%m/%Y")
 	  @seats = @message.seat_num
 	  @total =  @message.sub_total
       @recipients = recipient

@@ -11,8 +11,8 @@ class MovieShow < ActiveRecord::Base
   Price = [250, 200, 150]
   def add_seats_to_show
   	i = 1
-    (1..15).each do |i|
-        self.seats.create(:seat_no => i, :seat_type => Seat_type[i/5], :price => Price[i/5])
+    (0..14).each do |i|
+        self.seats.create(:seat_no => i+1, :seat_type => Seat_type[i/5], :price => Price[i/5])
     end
   end
 

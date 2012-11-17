@@ -18,9 +18,9 @@ class ShowsController < ApplicationController
     	@movie_shows = []
 	end
 	def movie_list
-		@location = Movie.movie_details(params[:movie])
-		session[:movie] = params[:movie]
-		session[:movie_date] = params[:movie_date]	
+		@location = Movie.movie_details(params[:movie], params[:movie_date], params[:theatre])
+		session[:movie_name] = params[:movie]
+		session[:movie_date] = params[:movie_date]
 	end
 
 	def create

@@ -13,7 +13,7 @@
 #listings {
 	height: 100px;
 	position: relative;
-	top: 100px;
+	top: 120px;
 }
 .theatre_name {
 	width: 90px;
@@ -35,6 +35,7 @@
 	height: 25px;
 	}
 }
+
 select option {
 	background: firebrick;
 	color: white;
@@ -45,11 +46,22 @@ select option {
 	.selection {
 	position: relative;
 	left: 100px;
-	top: 30px;
+	top: 80px;
 }
 
 .main{
 	a {
 	color: firebrick;
+	}
+}
+
+#listing_choice {
+	position: relative;
+	width: 200px;
+	top: 50px;
+	left: 200px;
+	color: firebrick;
+	input {
+	margin-right: 20px;
 	}
 }

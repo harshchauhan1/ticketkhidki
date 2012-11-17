@@ -8,7 +8,8 @@ class Seat < ActiveRecord::Base
   	seats = movie_show.seats
   	seat_numbers.each do |num|
   		seat = seats.find_by_seat_no(num)
-  		total_price += seat.price
+  		total_price = total_price + seat.price
+      logger.info(seat.price)
   	end
   	total_price
   end
