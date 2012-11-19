@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :email, :format => { :with => /^([A-z])+(\.?\w+)*@[A-z]+(\.[A-z]{2,4}){1,2}/ }
   has_many :bookings
   has_one :wallet, :dependent => :destroy
-  after_create :create_wallet
+  after_create :create_wallet#, :send_notification
   
   has_secure_password
 
@@ -31,9 +31,12 @@ class User < ActiveRecord::Base
   end
 
   def create_wallet
-    u = User.last
-    u.wallet = Wallet.create(:money => 10000)
+    self.wallet = Wallet.create(:money => 10000)
   end
 
+  # def send_notification
+  #   Emailer.user_registered(@user.email, "welcome to ticketkhidki", @user.id).deliver
+  #   return if request.xhr?
+  # end
 
 end

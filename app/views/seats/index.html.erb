@@ -5,13 +5,13 @@
 </div>
 <div id = "info">
 	<b>Movie:</b>
-		<select disabled = "disabled">
-			<option selected = "selected"><%= @movie_show.movie.name %></option>
-		</select>
+			<%= @movie_show.movie.name %><br>
 	<b>Date:</b>
-		<select disabled = "disabled">
-			<option selected = "selected"><%= @movie_date %></option>
-		</select>
+			<%= @movie_date %><br>
+	<b>Timing:</b>	
+			<%= @timing %><br>
+	<b>Theatre:</b>		
+			<%= @theatre%>
 		<div id = "audi_layout">
 			<button onclick = "show_audi_layout()">Audi layout</button>
 		</div>

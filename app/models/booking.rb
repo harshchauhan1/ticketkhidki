@@ -28,16 +28,21 @@ class Booking < ActiveRecord::Base
     end
   end
 
-  def self.theatre_revenue_report(movies)
-    @shows = []
-    @bookings = []
-    total = 0
-    movies.each do |movie|
-      @shows << movie.movie_shows
-      @shows.each do |show|
-        @boookings << show.bookings
-      end
+  def self.theatre_revenue_report(theatre, date)
+    @audi_report = {}
+    total_revenue = 0
+    audi_ids = theatre.audis.pluck(:id)
+    movie_shows = MovieShow.where('date(timing) =? and audi_id in (?)', date, audi_ids )
+    movie_shows.each do |show|
+      revenue_per_show  = show.bookings.select('count(*) booking_count, sum(sub_total) as total')
+      @audi_report[show.audi_id] ||= {}
+      @audi_report[show.audi_id][show.id] ||= {}
+      @audi_report[show.audi_id][show.id][:movie_revenue] ||= 0
+      @audi_report[show.audi_id][show.id][:movie_revenue] += revenue_per_show[0].total.to_f
+      @audi_report[show.audi_id][show.id][:no_of_bookings] =  revenue_per_show[0].booking_count
+      total_revenue += revenue_per_show[0].total.to_f
     end
-    return @shows 
+    @audi_report[:total_revenue] = total_revenue
+    return @audi_report
   end
 end

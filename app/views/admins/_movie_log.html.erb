@@ -33,8 +33,7 @@
       Booking Date
     </th>
   </tr>
-  <% bookings.each do |each_booking| %>
-	<% each_booking.each do |booking| %>
+  <% bookings.each do |booking| %>
     <tr>
       <td>
         <%= booking.id %>
@@ -66,7 +65,6 @@
         <%= booking.created_at.ctime %>
       </td>      
     </tr>
-  <% end %>
   <% end %>
 </table>
 </div>

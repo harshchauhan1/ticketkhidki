@@ -23,7 +23,7 @@ class Theatre < ActiveRecord::Base
 	  	end
       msg = "#{theatre_location.capitalize} has been added succesfully to theatres"
 	else
-	  	msg = "something went wrong, make sure you enter correct info."
+	  	msg = "Something went wrong, make sure you enter correct info."
   	end
   	return msg
   end
@@ -37,7 +37,7 @@ class Theatre < ActiveRecord::Base
     if theatre
       return "Something went wrong, try deleting the theatre agian!"
     else
-      return "theatre deleted successfully!"
+      return "Theatre deleted successfully!"
     end
   end	
 end

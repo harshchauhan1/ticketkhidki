@@ -23,18 +23,14 @@ class AdminsController < ApplicationController
 			@user_booking_info = user.bookings
 		elsif params[:movie]
 			movie = Movie.find_by_name(params[:movie])
-			movieshows = movie.movie_shows
-			movieshows.each do |show|
-			 @movie_booking_info << show.bookings
-			end
+			 @movie_booking_info = movie.bookings
 		end
 	end
 
 	def create_theatre_log
-		jn
 		theatre = Theatre.find_by_location(params[:theatre])
-		m = theatre.movies
-		@bookings = Booking.theatre_revenue_report(m)
+		date = params[:date_for_revenue].to_date
+		@report = Booking.theatre_revenue_report(theatre, date)
 	end
 
 	def theatre_log

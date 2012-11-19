@@ -20,6 +20,7 @@ class Emailer < ActionMailer::Base
       @email = curr_user.email
       @name = curr_user.name
       @recipients = recipient
+      @money = curr_user.wallet.money
       @from = 'no-reply@yourdomain.com'
       mail(:to => @recipients, :subject => @subject)
    end

@@ -56,3 +56,46 @@ position: relative;
 	}
 }
 
+.revenue {
+	position: relative;
+	width: 1100px;
+	top: 240px;
+	left: 100px;
+	background: grey;
+
+	.row {
+		height: 125px;
+
+		.timing {
+			div {
+				float: left;
+				margin-right: 30px;
+			}
+		}
+	}
+
+}
+
+#total_revenue {
+	position: relative;
+	top: 250px;
+	left: 1030px;
+}
+
+.theatres_table {
+	position: relative;
+	left: 200px;
+	top: 200px;
+	border-collapse: collapse;
+	position: relative;
+	border-color: firebrick;
+	text-color: green;
+	align: center;
+	td,th{
+	padding: 5px;
+	border: 1px solid firebrick;
+}
+}
+th {
+	background: grey;
+}

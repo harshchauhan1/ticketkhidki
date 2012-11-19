@@ -24,7 +24,7 @@
 				<% theatre = Theatre.theatre_arr %>
 				<% theatre.shift() %>
 				<% theatre.unshift("select theatre") %>
-				<%= select_tag "theatre", options_for_select(theatre), :onchange => "enable_date(this)" %>
+				<%= select_tag "theatre", options_for_select(theatre), :onchange => "enable_date(this)"%>
 			</div>
 			<div class = "option">
 				<% @today = @date.strftime("%d %b") %> <% @tomorrow = (@date+1).strftime(" %d %b") %> <% @day_after = (@date+2).strftime("%A, %d %b") %>

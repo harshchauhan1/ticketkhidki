@@ -18,7 +18,13 @@ class ShowsController < ApplicationController
     	@movie_shows = []
 	end
 	def movie_list
-		@location = Movie.movie_details(params[:movie], params[:movie_date], params[:theatre])
+		@listing_by_theatre = []
+		@listing_by_movie = []
+		if(params[:movie] == "select movie")
+			@listing_by_theatre = Movie.movie_listing_by_theatre(params[:theatre], params[:movie_date])
+		else
+			@listing_by_movie = Movie.movie_listing_by_movie(params[:movie], params[:movie_date])
+		end
 		session[:movie_name] = params[:movie]
 		session[:movie_date] = params[:movie_date]
 	end
@@ -26,7 +32,7 @@ class ShowsController < ApplicationController
 	def create
 		date_to = params[:date_to].to_s
 		date_from = params[:date_from].to_s
-		show_tim_arr = [params[:showtime1], params[:showtime2], params[:showtime3], params[:showtime4]]
+		show_tim_arr = params[:showtime]
 		msg = MovieShow.add_show(params[:theatre], params[:audi], params[:movie], show_tim_arr, date_to, date_from)
 		redirect_to admin_path(session[:user_id]), :notice => "#{msg}"
 	end

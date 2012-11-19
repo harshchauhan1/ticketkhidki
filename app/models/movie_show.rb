@@ -5,7 +5,7 @@ class MovieShow < ActiveRecord::Base
   has_many :seats, :dependent => :destroy
   has_many :bookings, :dependent => :destroy
   
-  after_create :add_seats_to_show
+  #after_create :add_seats_to_show
 
   Seat_type = ["platinum", "gold", "silver"]
   Price = [250, 200, 150]
@@ -26,7 +26,7 @@ class MovieShow < ActiveRecord::Base
       return "Invalid date selection!"
     end
     if !movie
-      Movie.create(:name => movie_name)
+      movie = Movie.create(:name => movie_name) 
     end
     # if MovieShow.where("audi_id = ? AND timing =?", args[1], timing)
     #   return false, "Show already exists"

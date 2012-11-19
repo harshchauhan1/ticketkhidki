@@ -10,8 +10,10 @@ class SeatsController < ApplicationController
 	end
 	def index
 		@movie_show = MovieShow.find(params[:movie_show_id])
+		@theatre = Audi.find(@movie_show.audi_id).theatre.location
 		@movie_date = session[:movie_date]
-    @seats = @movie_show.seats.where('status = "t"').collect(&:seat_no)
+    	@seats = @movie_show.seats.where('status = "t"').collect(&:seat_no)
+    	@timing = @movie_show.timing.strftime("%H:%M")
 	end
 
 	def create

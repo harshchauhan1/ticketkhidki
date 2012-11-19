@@ -1,0 +1,13 @@
+
+<div class = "listing">
+	<% location.each do |movie, movie_shows|  %>
+		<div class = "row">
+			<div class ="theatre_name"><b><u><%= movie %></u></b></div>
+			<div class ="timing">
+				<% movie_shows.each do |movie_show| %>
+					<%= link_to movie_show.timing.strftime("%H:%M"), movie_show_seats_path(movie_show) %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>

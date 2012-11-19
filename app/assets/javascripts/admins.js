@@ -1,3 +1,4 @@
+i = 2
 function start () {
 	$('.user_box')[0].disabled = true
 	$('.movie_box')[0].disabled = true
@@ -61,8 +62,13 @@ function get_audis (element) {
 }
 
 function show_timing (element) {
+	$(element).parent().prepend("<select name = 'showtime[]' onchange = 'hide_default(this)'><option>select</option><option>09:00</option><option>13:00</option><option>18:00</option><option>21:00</option></select>")
+	console.log($(element).prev().removeClass("hidden"))
+	
 	console.log($(element).prev().removeClass("hidden"))
 	$(element).addClass("hidden")
+	i = i + 1
+	i = i + 1
 }
 
 function hide_default (element) {

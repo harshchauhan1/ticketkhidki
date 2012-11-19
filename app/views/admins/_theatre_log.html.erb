@@ -1,0 +1,46 @@
+
+<% total_revenue = report.delete(:total_revenue) %>
+<table class = "theatres_table" border =2>
+  <tr>
+    <th>
+      Audi
+    </th>
+    <th>
+      Movie
+    </th>
+    <th>
+      Showtime
+    </th>
+    <th>
+      No. of Bookings
+    </th>
+    <th>
+      Revenue
+    </th>
+  </tr>
+  <% report.each do |k, v|  %>
+  
+    <tr>
+    	<td  rowspan = "4">
+  	<%= k%>
+  	</td>
+      <% v.each do |k1, v1| %>
+      	<% show = MovieShow.find(k1)%>
+  			<% name =Movie.find(show.movie_id).name%>
+        <td>
+        	<%= name%>  
+        </td>
+        <td>
+ 					<%=show.timing.strftime("%H:%M")%>
+        </td>
+        <td>
+      		<%= report[k][k1][:no_of_bookings]%>
+      	</td>
+      	<td>
+        &#8377;<%=report[k][k1][:movie_revenue]%>
+      </td>
+    </tr>
+  <% end %>
+  <%end%>
+</table>
+<div id = "total_revenue"><b>Toal Revenue : &#8377;<%=total_revenue%></b></div>
