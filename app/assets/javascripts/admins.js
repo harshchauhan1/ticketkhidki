@@ -40,8 +40,6 @@ $(document).ready( function () {
 	$('.show_calender').datepicker({dateFormat : 'dd/mm/yy'})
   	
   })
-
-
 function get_audis (element) {
 	theatre_id = $(element).val()
 	 $('#hhh').children().each( function() {
@@ -54,7 +52,7 @@ function get_audis (element) {
 	        dataType: 'json',
 	        success: function (data) {
 	        	for (var i = 0; i < data.length; i++) {
-	        		$("#hhh").append($("<option>" + data[i]["id"] + "</option>"))	
+	        		$("#hhh").append($("<option value =" + data[i]["id"] + ">" + (i+1) + "</option>"))	
 	        	};
 	        }
       	});

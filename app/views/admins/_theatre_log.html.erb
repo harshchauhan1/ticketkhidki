@@ -1,4 +1,3 @@
-
 <% total_revenue = report.delete(:total_revenue) %>
 <table class = "theatres_table" border =2>
   <tr>
@@ -18,11 +17,11 @@
       Revenue
     </th>
   </tr>
+  <% i = 0 %>
   <% report.each do |k, v|  %>
-  
     <tr>
     	<td  rowspan = "4">
-  	<%= k%>
+  	<%= i = i + 1 %>
   	</td>
       <% v.each do |k1, v1| %>
       	<% show = MovieShow.find(k1)%>

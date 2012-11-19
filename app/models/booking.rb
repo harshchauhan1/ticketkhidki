@@ -9,7 +9,7 @@ class Booking < ActiveRecord::Base
   	m.save
   	return m
   end
-
+  
   def self.book_seats(movie_show, seats, total_price, wallet, balance, user_id)
     if seats.any? && balance >= 0
       wallet.update_attribute(:money, balance)

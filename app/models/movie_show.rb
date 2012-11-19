@@ -5,7 +5,7 @@ class MovieShow < ActiveRecord::Base
   has_many :seats, :dependent => :destroy
   has_many :bookings, :dependent => :destroy
   
-  #after_create :add_seats_to_show
+  after_create :add_seats_to_show
 
   Seat_type = ["platinum", "gold", "silver"]
   Price = [250, 200, 150]
@@ -28,9 +28,9 @@ class MovieShow < ActiveRecord::Base
     if !movie
       movie = Movie.create(:name => movie_name) 
     end
-    # if MovieShow.where("audi_id = ? AND timing =?", args[1], timing)
-    #   return false, "Show already exists"
-    # end
+    if MovieShow.where("audi_id = ? AND timing =?", audi, show_tim_arr)
+      return "Show already exists"
+    end
     date_from.to_date.upto(date_to.to_date) do |day|
       show_tim_arr.each do |show_time|
         timing = DateTime.parse(day.to_s + " " + show_time.to_s)
@@ -38,7 +38,7 @@ class MovieShow < ActiveRecord::Base
         audi.movie_shows << show
       end
     end
-    return "show added succesfully"
+    return "Show/s added succesfully"
   end 
 
 end

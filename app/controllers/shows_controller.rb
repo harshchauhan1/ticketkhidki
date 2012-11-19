@@ -30,6 +30,7 @@ class ShowsController < ApplicationController
 	end
 
 	def create
+		jb
 		date_to = params[:date_to].to_s
 		date_from = params[:date_from].to_s
 		show_tim_arr = params[:showtime]
