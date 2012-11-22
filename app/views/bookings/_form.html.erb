@@ -1,0 +1,54 @@
+  <div class = "outer_div">
+  <div align = "center">
+<table class = "my_table" border =2>
+  <tr>
+    <th>
+      Booking id
+    </th>
+    <th>
+      Movie
+    </th>
+    <th>
+      Timings
+    </th>
+    <th>
+      Location
+    </th>
+    <th>
+      Seat No.
+    </th>
+    <th>
+      Amount
+    </th>
+    <th>
+      Booking Date
+    </th>
+  </tr>
+	<% @bookings.each do |booking| %>
+    <tr>
+      <td>
+        <%= booking.id %>
+      </td>
+      <td>
+        <%= booking.movie_show.movie.name %>
+      </td>
+      <td>
+        <%= booking.movie_show.timing.ctime %> 
+      </td>
+      <td>
+        <%= booking.movie_show.audi.theatre.location %>
+      </td>
+      <td>
+        <%= booking.seat_num %>
+      </td>
+      <td>
+        &#8377; <%= booking.sub_total %>
+      </td>
+      <td>
+        <%= booking.created_at.ctime %>
+      </td>      
+    </tr>
+  <% end %>
+</table>
+</div>
+</div>

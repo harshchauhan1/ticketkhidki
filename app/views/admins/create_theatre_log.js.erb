@@ -1,5 +1,0 @@
-<% if @report[:total_revenue] > 0 %>
-	$('#tlog').html("<%= escape_javascript(render :partial => 'admins/theatre_log', :locals => {:report => @report})%>")
-<% else %>
-	$('#tlog').html("<b>no results found<b>")
-<%end%>

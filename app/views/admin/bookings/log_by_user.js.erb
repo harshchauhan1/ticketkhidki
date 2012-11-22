@@ -1,0 +1,5 @@
+<% if @user_booking_info.any? %>
+	$('#log_details').html("<%= escape_javascript(render :partial => 'user_log', :locals => {:bookings => @user_booking_info})%>")
+<% else %>
+	$('#log_details').html("<b>No results found.</b>")
+<% end %>

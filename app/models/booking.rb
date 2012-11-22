@@ -1,18 +1,28 @@
 class Booking < ActiveRecord::Base
-  attr_accessible :seat_num, :show_id, :sub_total, :user_id
+  attr_accessible :seat_num, :movie_show_id, :sub_total, :user_id
   belongs_to :user
   belongs_to :movie_show
+  validates :movie_show_id, :presence  => true
+  validates :user_id, :presence => true
+  validates :movie_show_id, :uniqueness => {:scope => :seat_num}
+  after_create :send_notification
+  before_create :check_for_balance, :check_for_old_show
 
-  def self.details ()
-  	m = MovieShow.first.seats.first
-  	m.status = false
-  	m.save
-  	return m
+  def check_for_balance
+    if (user.wallet.money < sub_total)
+      return false
+    end
+  end
+
+  def check_for_old_show
+    if (movieshow.timing < DateTime.now)
+      return false
+    end
   end
   
   def self.book_seats(movie_show, seats, total_price, wallet, balance, user_id)
     if seats.any? && balance >= 0
-      wallet.update_attribute(:money, balance)
+      #wallet.update_attribute(:money, balance)
       admin_wallet = User.where('is_admin = ?', true).first.wallet
       admin_wallet.update_attribute(:money, (admin_wallet.money + total_price))
       booking = Booking.new
@@ -20,9 +30,12 @@ class Booking < ActiveRecord::Base
       booking.movie_show_id = movie_show.id
       booking.sub_total = total_price
       booking.seat_num = seats.join(',')
-      booking.save
-      movie_show.seats.where("seat_no in (#{seats.join(',')})").update_all(:status => true)
-      return true, booking
+      if booking.save
+        movie_show.seats.where("seat_no in (#{seats.join(',')})").update_all(:status => true)
+        return true, booking
+      else
+        return false
+      end
     else
      return false
     end
@@ -44,5 +57,9 @@ class Booking < ActiveRecord::Base
     end
     @audi_report[:total_revenue] = total_revenue
     return @audi_report
+  end
+
+  def send_notification 
+    Emailer.contact(self.user.email, "Your booking details", "#{self.id}").deliver
   end
 end

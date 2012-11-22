@@ -3,14 +3,15 @@
 	<%= form_tag seats_confirmation_movie_show_seats_path(@movie_show.id), :remote => true, :method => :get do %>
 		<div class = "check">
 			<table>
+				<% seats = @audi.seats %>
 				<% 3.times do  |row_num| %>
 					<tr >
             		<% 5.times do |col_num| %>
               			<% seat_num = (col_num + 1) + (row_num * 5) %>
               			<% if @seats.include? seat_num.to_s %>
-                			<td style = "background-image:url('/assets/grey.jpg')"><%=seat_num%></td>
+                			<td style = "background-image:url('/assets/grey.jpg')"><%=seats[seat_num-1].seat_no%></td>
               			<% else %>
-					      <td class= "row<%= row_num +  1 %>"><%= seat_num %><%= check_box_tag 'selected_seats[]', seat_num %></td>
+					      <td class= "row<%= row_num +  1 %>"><%= seats[seat_num-1].seat_no %><%= check_box_tag 'selected_seats[]', seats[seat_num-1].seat_no %></td>
               			<% end %>
             		<% end %>
 				  	</tr>

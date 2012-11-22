@@ -1,0 +1,95 @@
+digraph Ticketkhidki {
+  rankdir = "LR"; ranksep = "0.5"; nodesep = "0.4"; pad = "0.4,0.4"; margin = "0,0"; concentrate = "true"; labelloc = "t"; fontsize = "13"; fontname = "Arial Bold";
+  node [shape = "Mrecord", fontsize = "10", fontname = "Arial", margin = "0.07,0.05", penwidth = "1.0"];
+  edge [fontname = "Arial", fontsize = "7", dir = "both", arrowsize = "0.9", penwidth = "1.0", labelangle = "32", labeldistance = "1.8"];
+  label = "Ticketkhidki domain model\n\n";
+  m_Audi [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Audi</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="capacity">capacity <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+  m_Booking [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Booking</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="seat_num">seat_num <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="sub_total">sub_total <font face="Arial Italic" color="grey60">float</font></td></tr>
+</table>
+>];
+  m_Movie [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Movie</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="genre">genre <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="image_url">image_url <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="pic_content_type">pic_content_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="pic_file_name">pic_file_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="pic_file_size">pic_file_size <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="pic_updated_at">pic_updated_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="release_date">release_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+</table>
+>];
+  m_MovieShow [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">MovieShow</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="timing">timing <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+</table>
+>];
+  m_Seat [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Seat</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="price">price <font face="Arial Italic" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="seat_no">seat_no <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="seat_type">seat_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+</table>
+>];
+  m_Theatre [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Theatre</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="location">location <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="no_of_audis">no_of_audis <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+  m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="is_admin">is_admin <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="password_digest">password_digest <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+</table>
+>];
+  m_Wallet [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Wallet</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="money">money <font face="Arial Italic" color="grey60">float</font></td></tr>
+</table>
+>];
+  m_User -> m_Booking [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_MovieShow -> m_Booking [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Audi -> m_Seat [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_MovieShow -> m_Seat [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Theatre -> m_Audi [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Movie -> m_Theatre [arrowhead = "normal", arrowtail = "normal", weight = "2"]
+  m_User -> m_Wallet [arrowhead = "none", arrowtail = "none", weight = "2"]
+  m_Audi -> m_MovieShow [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Movie -> m_MovieShow [arrowhead = "normal", arrowtail = "none", weight = "2"]
+  m_Movie -> m_Booking [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"]
+}

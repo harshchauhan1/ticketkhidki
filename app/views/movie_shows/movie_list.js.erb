@@ -1,0 +1,9 @@
+<% if !@listing_by_movie.empty? %>
+$('#listings').html("<%= escape_javascript(render :partial => 'movie_shows/listing_by_movie', :locals => {:location => @listing_by_movie})%>")
+<%else%>
+$('#listings').html("<b>no results found</b>")
+<% end %>
+
+<% if @listing_by_theatre.any? %>
+$('#listings').html("<%= escape_javascript(render :partial => 'movie_shows/listing_by_theatre', :locals => {:location => @listing_by_theatre})%>")
+<% end %>

@@ -1,0 +1,12 @@
+<div id = "admin_theatre_log">
+	<%= form_tag log_admin_theatres_path, :method => 'get' do %>
+	<div class = "theatre_log_page"><b>Enter Theatre  :</b><% theatre = Theatre.all.collect{|theatre| theatre.location}%><%= select_tag "theatre", options_for_select(theatre), :prompt => "select theatre" %>
+		<%= text_field_tag "date_for_revenue", '', :class => "show_calender" %>
+	<%= submit_tag "get details" %></div>
+	<% end %>
+	<div id = "tlog">
+	<% if @report %>
+	  <%= render :partial => 'log_details', :locals => {:report => @report} %>
+	<% end %>
+	</div>
+</div>

@@ -9,7 +9,7 @@
 </div>
 <% end %>
 <div id = "listing_choice">movies<input type = "radio" name = "choice" onclick = "show_menu('movies', 'theatres')"/>theatres<input type = "radio" value = "movies" name = "choice" onclick ="show_menu('theatres', 'movies')"/></div>
-	<%= form_tag movie_list_shows_path, :remote => true, :method => 'get' do %>
+	<%= form_tag movie_list_movie_shows_path, :remote => true, :method => 'post' do %>
 		<div class = "selection">
 			<div class = "option">
 				<select>
@@ -17,19 +17,20 @@
 				</select>
 			</div>
 			<div class = "option" id = "movies">
-				<% movie = Movie.movie_arr %>
-				<%= select_tag "movie", options_for_select(movie), :onchange => "enable_date(this)", :class => "movie_box" %>
+				<% movie = Movie.all.collect{|movie| movie.name} %>
+				<%= select_tag "movie", options_for_select(movie), :onchange => "enable_date(this)", :class => "movie_box" , :prompt => "select movie" %>
 			</div>
 			<div class = "option" id = "theatres">
-				<% theatre = Theatre.theatre_arr %>
-				<% theatre.shift() %>
-				<% theatre.unshift("select theatre") %>
-				<%= select_tag "theatre", options_for_select(theatre), :onchange => "enable_date(this)"%>
+				<% theatre = Theatre.all.collect{|theatre| theatre.location} %>
+				<%= select_tag "theatre", options_for_select(theatre), :onchange => "enable_date(this)", :prompt => "select theatre" %>
 			</div>
 			<div class = "option">
 				<% @today = @date.strftime("%d %b") %> <% @tomorrow = (@date+1).strftime(" %d %b") %> <% @day_after = (@date+2).strftime("%A, %d %b") %>
 				<%= select_tag "movie_date", options_for_select(["select date", "Today, " + @today, "Tomorrow, " + @tomorrow, @day_after]), :onchange => "create_shows(this)", :class => "date_box" %>
 			</div>
+		</div>
+		<div id = "filters" class ="hidden">
+			<b>Filter by:</b><%= select_tag "time", options_for_select([["before 12 pm","1"], ["12 pm-5 pm","2"], ["after 5 pm","3"]]), :prompt => "time", :onchange => "update_shows(this)"%>
 		</div>
 		<div id = "listings">
 	    </div>

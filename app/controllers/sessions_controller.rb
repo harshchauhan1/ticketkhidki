@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
   	if user and user.authenticate(params[:password])
   		session[:user_id] = user.id
       session[:admin] = user.is_admin
-      nxt_page = session[:admin] ? admin_path(user.id) : shows_url
-      redirect_to nxt_page
+      redirect_to after_sign_in_path
   	else
       flash[:error] = "Invalid user/password combination"
   		redirect_to login_url
@@ -15,6 +14,6 @@ class SessionsController < ApplicationController
   end
   def destroy
   	reset_session
-  	redirect_to shows_url, notice: "Logged out"
+  	redirect_to movie_shows_url, notice: "Logged out"
   end
 end

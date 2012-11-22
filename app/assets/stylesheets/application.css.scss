@@ -31,6 +31,7 @@ background-color: #e1e2e3;
 text-align: center;
 position: relative;
 left: 100px;
+top: -200px;
 }
 
 #error{ 
@@ -99,7 +100,8 @@ body {
 }
 .home {
 	position: absolute;
-	top: 125px;
+	top: 80px;
+	left: -480px;
 	width: 50px;
 	a {
 	color: firebrick;
@@ -117,4 +119,36 @@ body {
 #booking {
 	position: absolute;
 	left: 565px;	
+}
+
+#dashboard {
+	position:relative;
+	top: 30px;
+	width: 200px;
+	background: firebrick;
+	height: 200px;
+
+	ul {
+	list-style: none;
+	}
+
+	ul li:first {
+	margin-top: 20px;
+	}
+	a {
+	color: white;
+	}
+	ul li {
+		margin-bottom: 10px;
+	}
+
+}
+
+.header {
+	a {
+	position: relative;
+	top: 50px;
+	left: 500px;
+	color: firebrick;
+	}
 }

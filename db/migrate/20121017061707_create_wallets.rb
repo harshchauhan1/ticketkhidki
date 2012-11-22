@@ -3,7 +3,7 @@ class CreateWallets < ActiveRecord::Migration
     create_table :wallets do |t|
       t.float :money
       t.integer :user_id
-
+ 
       t.timestamps
     end
   end

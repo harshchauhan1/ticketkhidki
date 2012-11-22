@@ -1,7 +1,0 @@
-<% if @user_booking_info.any? %>
-$('#log_details').html("<%= escape_javascript(render :partial => 'admins/user_log', :locals => {:bookings => @user_booking_info})%>")
-<% end %>
-
-<% if @movie_booking_info.any? %>
-$('#log_details').html("<%= escape_javascript(render :partial => 'admins/movie_log', :locals => {:bookings => @movie_booking_info})%>")
-<% end %>

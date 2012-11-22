@@ -1,0 +1,26 @@
+<div id = "admin_theatre_list">
+<h1>Listing theatres</h1>
+<div id = "theatre_list_table">
+  <table class = "my_table", border = "2">
+    <th>Theatre name</th>
+    <th>No of Audis</th>
+    <th>Action</th>
+    <% @theatres.each do |theatre| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even')  %>">
+      <td class="list_description">
+        <dl>
+          <dt><%= theatre.location %></dt>
+      </td>
+      <td>
+        <%= theatre.no_of_audis %>
+      </td>
+      <td class = "list_actions">
+        <%= link_to 'Destroy', "/admin/theatres/#{theatre.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<br />
+<%= link_to 'New Theatre', new_admin_theatre_path %>
+</div>

@@ -5,7 +5,7 @@
 			<div class ="theatre_name"><b><u><%= movie %></u></b></div>
 			<div class ="timing">
 				<% movie_shows.each do |movie_show| %>
-					<%= link_to movie_show.timing.strftime("%H:%M"), movie_show_seats_path(movie_show) %>
+					<%= link_to movie_show.timing.strftime("%H:%M"), movie_show_seats_path(movie_show), :class => "show_time"%>
 				<% end %>
 			</div>
 		</div>

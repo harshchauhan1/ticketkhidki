@@ -9,16 +9,20 @@
 <body>
 <div class = "header">
 	<h1><u>TicketKhidki</u></h1>
-	<% if session[:user_id] %>
 		<% user = User.find(session[:user_id]) %>
-		<div class = "home"><%= link_to 'Home', movie_shows_path%></div>
-		<%= link_to "My Bookings", bookings_path%>
-		<%= link_to 'Logout', logout_path, method: :delete%>
-		<%= link_to 'change password', change_password_path %> 
 		<div class = "name">
 			<p> Welcome  <%= user.name.capitalize %>,</p> <p> Wallet: &#8377; <%= user.wallet.money %> </p>
 		</div>
-	<% end %>
+		<%= link_to 'Home', admin_dashboard_path %>
+		<%= link_to 'Logout', logout_path, method: :delete%>
+		<%= link_to 'change password', admin_change_password_path %>
+</div>
+<div id = "dashboard">
+	<ul>
+		<li><%= link_to "Bookings Log", log_admin_bookings_path%></li>
+		<li><%= link_to "Theatre log", log_admin_theatres_path %></li>
+		<li><%= link_to "Create Show/s", new_admin_movie_show_path %></li>
+		<li><%= link_to "Manage Theatres", admin_theatres_path %></li>
 </div>
 <% flash.each do |key, msg| %>
        <%= content_tag :div, msg, :id => key %>

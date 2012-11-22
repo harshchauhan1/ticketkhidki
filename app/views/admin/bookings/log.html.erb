@@ -1,0 +1,23 @@
+<body onload = "start()">
+<div id = "admin_booking_log">
+<%= form_tag log_by_user_admin_bookings_path, :remote => true, :method => 'get', :id => 'log_form' do %>
+	<div class = "selection">
+		<div class = "option">
+			<input type = "radio" class ="user_select" name = "group1" onclick = "activate(this)"/>
+			<% user = User.where(:is_admin => false).collect{|u| u.name} %>
+			<%= select_tag "user", options_for_select(user), :class => "user_box", :prompt => "select user" %>
+		</div>
+		<div class = "option">
+			<input type = "radio" class = "movie_select" name = "group1" onclick = "activate(this)"/>
+			<% movie = Movie.all.collect{|movie| movie.name} %>
+            <%= select_tag "movie", options_for_select(movie), :class => "movie_box", :prompt => "select movie" %>
+		</div>
+		<div class ="option">
+			<%= submit_tag "Get Details" %>
+		</div>
+	</div>
+<% end %>
+<div id = "log_details">
+</div>
+</div>
+</body>

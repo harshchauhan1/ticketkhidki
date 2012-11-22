@@ -29,8 +29,8 @@ select {
 #theatre_box {
 border: solid 2px firebrick;
 position: relative;
-top: -242px;
-left: 700px;
+top: -120px;
+left: 400px;
 width: 500px;
 background: lightgrey;
 height: 340px;	
@@ -39,9 +39,9 @@ height: 340px;
 #add_theatre {
 position: relative;
 	width: 210px;
-	left: 50px;
+	left: 150px;
 	height: 180px;	
-	border-right: solid 2px firebrick;
+	
 }
 
 #remove_theatre {
@@ -79,10 +79,10 @@ position: relative;
 #total_revenue {
 	position: relative;
 	top: 250px;
-	left: 1030px;
+	left: 730px;
 }
 
-.theatres_table {
+.my_table {
 	position: relative;
 	left: 200px;
 	top: 200px;
@@ -98,4 +98,49 @@ position: relative;
 }
 th {
 	background: grey;
+}
+
+#log_details {
+	position: relative;
+	top: 130px;
+
+	.outer_div {
+	position: relative;
+	top: -20px;
+	}
+}
+
+#admin_theatre_log {
+	position: relative;
+	left: 300px;
+	top: -200px;
+	width: 700px;
+}
+
+#admin_booking_log {
+	position: relative;
+	left: 300px;
+	top: -200px;	
+	width: 700px;
+}
+
+#admin_theatre_list {
+	position: relative;
+	left: 300px;
+	top: -200px;
+	width: 700px;		
+}
+
+#theatre_list_table {
+	position: relative;
+	top: -200px;
+	left: -50px;
+	width: 700px;
+}
+
+#admin_show_add {
+	position: relative;
+	left: 300px;
+	top: -200px;
+	width: 700px;			
 }

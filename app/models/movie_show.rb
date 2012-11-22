@@ -2,43 +2,38 @@ class MovieShow < ActiveRecord::Base
   attr_accessible :audi_id, :movie_id, :timing
   belongs_to :movie
   belongs_to :audi
-  has_many :seats, :dependent => :destroy
+  has_many :seats, :through => :audi, :dependent => :destroy
   has_many :bookings, :dependent => :destroy
-  
-  after_create :add_seats_to_show
+  validates :movie_id, :presence => true
+  validates :timing, :uniqueness => {:scope => :audi_id, :message => "show already exists" }
+  validate :timing_cannot_be_in_the_past
 
-  Seat_type = ["platinum", "gold", "silver"]
-  Price = [250, 200, 150]
-  def add_seats_to_show
-  	i = 1
-    (0..14).each do |i|
-        self.seats.create(:seat_no => i+1, :seat_type => Seat_type[i/5], :price => Price[i/5])
+
+
+  def timing_cannot_be_in_the_past
+    if timing < DateTime.now
+      errors.add(:timing, "show_time has already passed")
     end
   end
 
   def self.add_show (theatre, audi, movie_name, show_tim_arr, date_to, date_from)
     audi = Audi.find(audi)
     movie = Movie.find_by_name(movie_name)
-     if (show_tim_arr.uniq.length != show_tim_arr.length)
-      return "Select distinct show timings!"
-    end
-    if Date.parse(date_to) < Date.parse(date_from) 
-      return "Invalid date selection!"
-    end
     if !movie
-      movie = Movie.create(:name => movie_name) 
+      movie = Theatre.find(theatre).movies.create(:name => movie_name)
     end
-    if MovieShow.where("audi_id = ? AND timing =?", audi, show_tim_arr)
-      return "Show already exists"
-    end
+    show = []
     date_from.to_date.upto(date_to.to_date) do |day|
       show_tim_arr.each do |show_time|
         timing = DateTime.parse(day.to_s + " " + show_time.to_s)
-        show = movie.movie_shows.create(:timing => timing)
-        audi.movie_shows << show
+        show = movie.movie_shows.new(:timing => timing)
+        if show.save
+          audi.movie_shows << show
+        else
+          return [false, show]
+        end
       end
     end
-    return "Show/s added succesfully"
+    return [true, show]
   end 
-
 end

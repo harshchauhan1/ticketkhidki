@@ -1,6 +1,6 @@
 Ticketkhidki::Application.routes.draw do
   
-  resources :bookings
+  resources :bookings, :only => [:create, :index]
  # resources :admins
   #get "users/index"
   resources :movie_shows do
@@ -10,27 +10,45 @@ Ticketkhidki::Application.routes.draw do
       end
     end
   end
+  resources :movie_shows do
+    collection do
+      post :movie_list
+    end
+  end
   resources :users
-  resources :shows do
+  resource :admin, :only => []
+  get 'admin/dashboard', :controller => :admin
+  
+  scope :path => 'admin' do
+    get 'change_password', :controller => 'users' ,:as => :admin_change_password
+  end
+namespace "admin" do
+  resources :bookings, :only => [] do
     collection do
-      get :movie_list
+      get :log
+      get :log_by_user
+      get :log_by_movie
     end
   end
- 
- resources :admins do
+  resources :theatres, :except => [:show] do
     collection do
-      post :log_list
-      post :add_shows 
-      get :theatre_log
-      post :create_theatre_log
-    end
-  end
-  resources :theatres do
-    collection do
-      post :add_theatre
       get :audis
+      get :log
     end
   end
+  resources :movie_shows, :only => [:new, :create]
+  #resources :theateres do
+end
+ 
+ # resources :admins do
+ #    collection do
+ #      post :log_list
+ #      post :add_shows 
+ #      get :theatre_log
+ #      post :create_theatre_log
+ #    end
+ #  end
+  
   controller :users do
     get 'change_password' => :change_password
     post 'change_password' => :save_password
@@ -41,11 +59,7 @@ Ticketkhidki::Application.routes.draw do
     post 'login' => :create 
     delete 'logout' => :destroy
   end
-  resources :sessions
-  resources :bye_mail
-  controller :bye_mail do
-    post 'sendmail' => :sendmail
-  end
+  resources :sessions, :only => []
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -95,7 +109,7 @@ Ticketkhidki::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'shows#index'
+  root :to => 'movie_shows#index'
 
   # See how all your routes lay out with "rake routes"
 

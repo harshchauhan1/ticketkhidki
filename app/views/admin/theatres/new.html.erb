@@ -1,0 +1,14 @@
+<div id = "theatre_box">
+    <div style= "text-align: center"><h1><u>Add theatre</u></h1></div>
+    <div id= "add_theatre">
+        <%= form_tag admin_theatres_url do %>
+            <div class = "tfield"><b>Enter Theatre Location :</b></div><div class ="tfield"><%= text_field_tag 'theatre[location]'%>
+            <% if @theatre.errors.messages[:location] %>
+            <%= @theatre.errors.messages[:location][0] %>
+            <% end %>
+        </div><br>
+            <div class ="tfield"><b>No of Audis :</b></div><div class ="tfield"><%= select_tag "audis", options_for_select(["1","2", "3", "4", "5", "6", "7", "8", "9", "10"]), :name => 'theatre[no_of_audis]'%></div>
+            <div style = "position: relative; top: 50px;"><%= submit_tag "Add Theatre" %></div>
+        <% end %>
+    </div>
+</div>

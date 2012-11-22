@@ -13,5 +13,4 @@ class Seat < ActiveRecord::Base
   	end
   	total_price
   end
-  # seat.update_attribute(:status, true)
 end
