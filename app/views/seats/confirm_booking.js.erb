@@ -1,7 +1,7 @@
 <% if !@total_price.nil? %>
 console.log("confirm")
 $("#outer").addClass("outer_modal")
-$('#testing').html("<%= escape_javascript(render :partial => 'seats/testing_data', :locals => {:movie_show => @movie_show})%>")
+$('#testing').html("<%= escape_javascript(render :partial => 'seats/confirm_window', :locals => {:movie_show => @movie_show, :price_per_seat => @price_per_seat})%>")
 
 <% elsif !@error.nil? %>
 $("#error_label").removeClass("error_class")

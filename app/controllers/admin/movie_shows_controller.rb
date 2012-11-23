@@ -20,6 +20,7 @@ class Admin::MovieShowsController < ApplicationController
 		show_tim_arr = params[:showtime]
 		if Date.parse(date_to) < Date.parse(date_from) 
       		flash[:error] = "invalid date selection"
+      		
     	end
     	if (show_tim_arr.uniq.length != show_tim_arr.length)
       		flash[:error] = "select distinct timings"

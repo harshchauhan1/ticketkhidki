@@ -21,6 +21,7 @@ function create_shows (element) {
   if (($(element).val()) != "select date") {
     form.submit()
   }
+  $('#filters').removeClass("hidden")
 }
 
 function ticket_book (element) {

@@ -1,5 +1,5 @@
 class Booking < ActiveRecord::Base
-  attr_accessible :seat_num, :movie_show_id, :sub_total, :user_id
+  attr_accessible :seat_num, :movie_show_id, :sub_total, :user_id, :t_id
   belongs_to :user
   belongs_to :movie_show
   validates :movie_show_id, :presence  => true
@@ -9,36 +9,31 @@ class Booking < ActiveRecord::Base
   before_create :check_for_balance, :check_for_old_show
 
   def check_for_balance
-    if (user.wallet.money < sub_total)
-      return false
+    if user.wallet.money < sub_total
+      errors.add("insufficient balance")
     end
   end
 
   def check_for_old_show
-    if (movieshow.timing < DateTime.now)
-      return false
+    if movie_show.timing < DateTime.now
+      error.add("cant book for past shows")
     end
   end
   
-  def self.book_seats(movie_show, seats, total_price, wallet, balance, user_id)
-    if seats.any? && balance >= 0
-      #wallet.update_attribute(:money, balance)
-      admin_wallet = User.where('is_admin = ?', true).first.wallet
-      admin_wallet.update_attribute(:money, (admin_wallet.money + total_price))
-      booking = Booking.new
-      booking.user_id = user_id
-      booking.movie_show_id = movie_show.id
-      booking.sub_total = total_price
-      booking.seat_num = seats.join(',')
-      if booking.save
-        movie_show.seats.where("seat_no in (#{seats.join(',')})").update_all(:status => true)
-        return true, booking
+  def self.book_seats(movie_show, seats, total_price, wallet, balance, user_id, price_per_seat)
+      logger.info(price_per_seat)
+    transaction_id = (1..8).map{ rand(36).to_s(36) }.join
+    admin_wallet = User.where('is_admin = ?', true).first.wallet
+    seats.each do |seat_num|
+      booking = Booking.create(:user_id => user_id, :movie_show_id => movie_show.id, :sub_total => price_per_seat[seat_num], :seat_num => seat_num, :t_id => transaction_id)
+      if booking
+        wallet.update_attribute(:money, balance)
+        admin_wallet.update_attribute(:money, (admin_wallet.money + total_price))     
       else
         return false
       end
-    else
-     return false
     end
+    return true, transaction_id
   end
 
   def self.theatre_revenue_report(theatre, date)

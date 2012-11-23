@@ -11,12 +11,13 @@ class BookingsController < ApplicationController
   def create
     movie_show = MovieShow.find(params[:movie_show_id])
     seats = session[:seats]
+    price_per_seat = params[:price_per_seat]
     total_price = session[:total]
     wallet = User.find_by_id(session[:user_id]).wallet
     balance = wallet.money - total_price
-    success, booking = Booking.book_seats(movie_show, seats, total_price, wallet, balance, session[:user_id])
+    success, transaction_id = Booking.book_seats(movie_show, seats, total_price, wallet, balance, session[:user_id], price_per_seat)
     if success
-      redirect_to shows_path, :notice => "Your Booking id is #{booking.id}"
+      redirect_to movie_shows_path, :notice => "Your Transaction id is '#{transaction_id}'"
     else
       flash[:error] = "Sorry you have insufficient money." 
     end

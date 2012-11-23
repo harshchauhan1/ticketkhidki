@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :genre, :name, :release_date, :image_url
+  attr_accessible :genre, :name
+  validates :name, :presence => true
   validates :name, :uniqueness => :true
   has_many :movie_shows, :dependent => :destroy
   has_many :bookings, :through => :movie_shows
@@ -10,15 +11,15 @@ class Movie < ActiveRecord::Base
     date = Date.parse(movie_date[1])
   	movie = Movie.find_by_name(movie_name)
     theatres = Theatre.scoped
+    logger.info(theatres)
     shows = []
-    logger.info(date)
-    logger.info(theatres.inspect)
     listing = Hash.new(Array.new)
       theatres.each do |theatre|
         if theatre.movies.where('id = ?', movie.id).any?
           audi_ids = theatre.audis.collect(&:id)
+          logger.info(audi_ids)
           shows = theatre.movies.where('id = ?', movie.id)[0].movie_shows.where("date(timing) = ?", date).select{ |m| audi_ids.include? m.audi_id}
-          
+          #logger.info(shows.inspect)
           listing[theatre.location.to_sym] = shows if shows.any?
         end
       end
