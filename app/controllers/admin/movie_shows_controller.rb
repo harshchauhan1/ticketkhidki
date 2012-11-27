@@ -20,7 +20,7 @@ class Admin::MovieShowsController < ApplicationController
 		show_tim_arr = params[:showtime]
 		if Date.parse(date_to) < Date.parse(date_from) 
       		flash[:error] = "invalid date selection"
-      		
+
     	end
     	if (show_tim_arr.uniq.length != show_tim_arr.length)
       		flash[:error] = "select distinct timings"
@@ -30,7 +30,7 @@ class Admin::MovieShowsController < ApplicationController
 			redirect_to after_sign_in_path, :notice => "show/s added succesfully"
 		else
 			flash[:error] = movie_show.errors.messages
-			redirect_to after_sign_in_path
+			render 'admin/movie_shows/new'
 		end
 	end
 end

@@ -2,11 +2,12 @@ Hi!
 
 Thank you for booking your tickets at ticketkhidki.com.
 here are your booking details--
+<h1>Transaction id   :<%= @details[:transaction_id]%></h1>
 <ul style = "list-style: none">
-	<li><b>Name       :    </b><%= @user %></li>
-	<li><b>Movie      :    </b><%= @movie %></li>
-	<li><b>Location   :    </b><%= @location %>
-	<li><b>Timing     :    </b><%= @timing %></li>
-	<li><b>Seat num      :    </b><%= @seats %></li>
-	<li><b>Total      :    </b><%= @total %></li>
+	<li><b>Name       :    </b><%= @details[:user_name] %></li>
+	<li><b>Movie      :    </b><%= @details[:movie_name] %></li>
+	<li><b>Location   :    </b><%= @details[:theatre_location] %>
+	<li><b>Timing     :    </b><%= @details[:timing] %></li>
+	<li><b>Seat num   :    </b><%= @details[:seats] %></li>
+	<li><b>Total      :    </b><%= @details[:total_price] %></li>
 </ul>

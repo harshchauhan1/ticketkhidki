@@ -15,11 +15,12 @@ class BookingsController < ApplicationController
     total_price = session[:total]
     wallet = User.find_by_id(session[:user_id]).wallet
     balance = wallet.money - total_price
-    success, transaction_id = Booking.book_seats(movie_show, seats, total_price, wallet, balance, session[:user_id], price_per_seat)
+    success, transaction_id, booking = Booking.book_seats(movie_show, seats, total_price, wallet, balance, session[:user_id], price_per_seat)
     if success
       redirect_to movie_shows_path, :notice => "Your Transaction id is '#{transaction_id}'"
     else
-      flash[:error] = "Sorry you have insufficient money." 
+      flash[:error] =  booking.errors.messages
+      redirect_to request.referrer
     end
   end
 

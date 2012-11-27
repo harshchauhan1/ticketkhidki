@@ -1,10 +1,10 @@
 class Theatre < ActiveRecord::Base
   attr_accessible :location, :no_of_audis
   has_and_belongs_to_many :movies 
-  validates :location, :uniqueness => true
-  validates :location, :presence => true
-  validates :no_of_audis, :numericality => {:only_integer => true, :in => 1..10 }
   has_many :audis, :dependent => :destroy
+  validates :location, :no_of_audis, :presence => true
+  validates :location, :uniqueness => true
+  validates :no_of_audis, :numericality => {:only_integer => true, :greater_than => 0, :less_than => 11, :allow_blank => true }
   before_validation :strip_space
   after_create :add_audis
 

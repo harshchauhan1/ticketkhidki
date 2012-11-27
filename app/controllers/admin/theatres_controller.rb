@@ -12,6 +12,7 @@ class Admin::TheatresController < ApplicationController
 	end
 	
 	def create
+
 		@theatre = Theatre.new(params[:theatre])
 		if @theatre.save
 			redirect_to admin_theatres_path, :notice => "Theatre successfully added"

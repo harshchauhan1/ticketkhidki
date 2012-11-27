@@ -5,7 +5,7 @@
 <div id = "add_shows">
     <%= form_tag admin_movie_shows_path do %>
         <div>
-            <div><b>Select Theatre  :</b> <b style ="position: relative; left: 18px;">Select Audi :</b></div><% theatre = @theatres.map { |t| [t.location, t.id] }%><%= select_tag "theatre", options_for_select(theatre), :onchange => "get_audis(this)", :id => "theatre", :prompt => "select" %>
+            <div><b>Select Theatre  :</b> <b style ="position: relative; left: 18px;">Select Audi :</b></div><% theatre = Theatre.scoped.map { |t| [t.location, t.id] }%><%= select_tag "theatre", options_for_select(theatre), :onchange => "get_audis(this)", :id => "theatre", :prompt => "select" %>
             <%= select_tag "audi", options_for_select(["select"]), :class => "audi", :id => "audis" %>
         </div>
 

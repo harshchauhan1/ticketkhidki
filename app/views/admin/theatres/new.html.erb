@@ -1,14 +1,12 @@
 <div id = "theatre_box">
     <div style= "text-align: center"><h1><u>Add theatre</u></h1></div>
     <div id= "add_theatre">
-        <%= form_tag admin_theatres_url do %>
-            <div class = "tfield"><b>Enter Theatre Location :</b></div><div class ="tfield"><%= text_field_tag 'theatre[location]'%>
-            <% if @theatre.errors.messages[:location] %>
-            <%= @theatre.errors.messages[:location][0] %>
-            <% end %>
+        <%= form_for @theatre, :url => admin_theatres_url do |f| %>
+            <div class = "tfield"><b>Enter Theatre Location :</b></div><div class ="tfield"><%= f.text_field :location%>
+            <%= @theatre.errors.messages[:location].try(:first) %>
         </div><br>
-            <div class ="tfield"><b>No of Audis :</b></div><div class ="tfield"><%= select_tag "audis", options_for_select(["1","2", "3", "4", "5", "6", "7", "8", "9", "10"]), :name => 'theatre[no_of_audis]'%></div>
-            <div style = "position: relative; top: 50px;"><%= submit_tag "Add Theatre" %></div>
+            <div class ="tfield"><b>No of Audis :</b></div><div class ="tfield"><%= f.select :no_of_audis, options_for_select(get_no_of_audis, :selected => @theatre.no_of_audis)%><%= @theatre.errors.messages[:no_of_audis].try(:first) %></div>
+            <div style = "position: relative; top: 50px;"><%= f.submit %></div>
         <% end %>
     </div>
 </div>
